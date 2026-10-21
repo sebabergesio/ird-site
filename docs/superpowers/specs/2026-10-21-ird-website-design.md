@@ -628,6 +628,12 @@ IRD/
 
 ### Publicación
 
+> **Actualización 21/10/2026:** hosting definido: **GitHub Pages** desde el repo
+> público `sebabergesio/ird-site`, espejo de `site/` vía `git subtree`
+> (`tools/publish_pages.ps1`). El repo de trabajo sigue privado porque el plan
+> Free no permite Pages en repos privados. Donde este documento diga
+> Netlify/Vercel/Cloudflare o `dist/`, vale esta actualización.
+
 - Hosting estático: Netlify, Vercel o Cloudflare Pages (free tier).
 - Se publica solo la carpeta pública (`dist/` generada por copia), no `documentos/`, `Recursos/`, `herramientas/`, `_legacy/` ni `docs/`.
 - HTTPS y dominio propio.

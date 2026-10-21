@@ -21,7 +21,9 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
-SITE_HOST = "ird.example"
+SITE_URL = "https://sebabergesio.github.io/ird-site"
+SITE_HOST = urlparse(SITE_URL).netloc
+SITE_BASE_PATH = urlparse(SITE_URL).path.rstrip("/")
 SKIP_DIRS = {
     ".git", ".superpowers", "_legacy", "admin", "archive", "assets",
     "content", "dist", "docs", "documentos", "herramientas", "Recursos",
@@ -308,9 +310,9 @@ def check_parity(root: Path, allow_missing: bool) -> list[str]:
         en_parser = Collector(); en_parser.feed(en.read_text(encoding="utf-8", errors="replace"))
         es_hl = hreflang_map(es_parser)
         en_hl = hreflang_map(en_parser)
-        if "en" in es_hl and urlparse(es_hl["en"]).path != public_path(en_rel):
+        if "en" in es_hl and urlparse(es_hl["en"]).path != SITE_BASE_PATH + public_path(en_rel):
             errors.append(f"{es_rel}: hreflang en no apunta a {en_rel}")
-        if "es-ar" in en_hl and urlparse(en_hl["es-ar"]).path != public_path(es_rel):
+        if "es-ar" in en_hl and urlparse(en_hl["es-ar"]).path != SITE_BASE_PATH + public_path(es_rel):
             errors.append(f"{en_rel}: hreflang es-AR no apunta a {es_rel}")
     return errors
 

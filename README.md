@@ -34,6 +34,9 @@ python tools/check_site.py
 # Publicar: build + copia a var/dist + validación + ZIP opcional
 powershell -ExecutionPolicy Bypass -File tools/publish.ps1
 powershell -ExecutionPolicy Bypass -File tools/publish.ps1 -NoBuild
+
+# Publicar en GitHub Pages: build + check + subtree push al repo público
+powershell -ExecutionPolicy Bypass -File tools/publish_pages.ps1
 ```
 
 Vista previa local:
@@ -65,11 +68,14 @@ python -m unittest discover -s tools/tests -v
 
 ## Estado del proyecto
 
-- El sitio actual es estático, bilingüe ES/EN y no está desplegado.
+- El sitio actual es estático, bilingüe ES/EN y se publica en GitHub Pages:
+  `https://sebabergesio.github.io/ird-site/`, desde el repo público
+  `sebabergesio/ird-site` (espejo de `site/`). El repo de trabajo sigue privado.
 - Los precios se muestran en USD (ancla) y en ARS con cotización MEP en vivo
   (`site/assets/js/rates.js`, fuente: `dolarapi.com`). Si la consulta falla,
   queda visible el precio en USD y se avisa en pantalla.
-- El dominio sigue como placeholder: `https://ird.example`.
+- El dominio propio sigue pendiente: cuando se defina, se actualiza `SITE_URL`
+  en `tools/build_site.py` y `tools/check_site.py`, se regenera y se republica.
 - El catálogo de soluciones, el panel remoto, los pagos (Mercado Pago y PayPal)
   y la entrega automática están en etapa de diseño. No hay código de tienda
   todavía.
@@ -79,3 +85,6 @@ python -m unittest discover -s tools/tests -v
 La raíz del repositorio es esta carpeta. `archive/` y `var/` no se versionan.
 Antes de publicar, correr build y check; después commitear `src/` y `site/`
 juntos para que el sitio generado y su fuente no se separen.
+
+El repo público de Pages es un espejo unidireccional de `site/` (remote `site`).
+No se edita ni se commitea ahí a mano: se publica con `tools/publish_pages.ps1`.

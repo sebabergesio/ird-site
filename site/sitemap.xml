@@ -1,87 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ird.example/</loc>
+    <loc>https://sebabergesio.github.io/ird-site/</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/"/>
   </url>
   <url>
-    <loc>https://ird.example/documento.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/documento.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/documento.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/document.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/documento.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/documento.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/document.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/documento.html"/>
   </url>
   <url>
-    <loc>https://ird.example/laboratorio.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/laboratorio.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/laboratorio.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/lab.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/laboratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/laboratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/lab.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/laboratorio.html"/>
   </url>
   <url>
-    <loc>https://ird.example/sobre-mi.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/sobre-mi.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/sobre-mi.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/sobre-mi.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/sobre-mi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/sobre-mi.html"/>
   </url>
   <url>
-    <loc>https://ird.example/contacto.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/contacto.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/contacto.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/contacto.html"/>
   </url>
   <url>
-    <loc>https://ird.example/terminos.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/terminos.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/terminos.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/terms.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/terminos.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/terminos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/terminos.html"/>
   </url>
   <url>
-    <loc>https://ird.example/en/</loc>
+    <loc>https://sebabergesio.github.io/ird-site/en/</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/"/>
   </url>
   <url>
-    <loc>https://ird.example/en/document.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/en/document.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/documento.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/document.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/documento.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/documento.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/document.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/documento.html"/>
   </url>
   <url>
-    <loc>https://ird.example/en/lab.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/en/lab.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/laboratorio.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/lab.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/laboratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/laboratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/lab.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/laboratorio.html"/>
   </url>
   <url>
-    <loc>https://ird.example/en/about.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/en/about.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/sobre-mi.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/sobre-mi.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/sobre-mi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/sobre-mi.html"/>
   </url>
   <url>
-    <loc>https://ird.example/en/contact.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/en/contact.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/contacto.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/contacto.html"/>
   </url>
   <url>
-    <loc>https://ird.example/en/terms.html</loc>
+    <loc>https://sebabergesio.github.io/ird-site/en/terms.html</loc>
     <lastmod>2026-10-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/terminos.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/terms.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/terminos.html"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://sebabergesio.github.io/ird-site/terminos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sebabergesio.github.io/ird-site/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sebabergesio.github.io/ird-site/terminos.html"/>
   </url>
 </urlset>

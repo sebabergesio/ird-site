@@ -25,7 +25,7 @@ from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parent.parent
 ROOT = PROJECT / "site"
-SITE_URL = "https://ird.example"
+SITE_URL = "https://sebabergesio.github.io/ird-site"
 EMAIL = "sebabergesio472@gmail.com"
 
 PATHS = {
