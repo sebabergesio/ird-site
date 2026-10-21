@@ -1,9 +1,17 @@
-_legacy/
-dist/
+# Salidas y temporales (se regeneran)
+var/
 __pycache__/
+*.py[cod]
 *.aux
 *.log
 *.out
 *.toc
-src/docs/build/
-.superpowers/sdd/
+*.synctex.gz
+
+# Archivo histórico y material no publicado
+archive/
+.superpowers/
+
+# Sistema
+.DS_Store
+Thumbs.db

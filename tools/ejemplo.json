@@ -1,0 +1,57 @@
+{
+  "codigo": "SOL-001",
+  "titulo": "Optimización de Procesos",
+  "cliente": "PyME de ejemplo S.A.",
+  "fecha": "2026-10-21",
+  "version": "1.0",
+  "resumen": {
+    "problema": "La línea de producción pierde tiempo por cuellos de botella y retrabajo entre estaciones.",
+    "solucion": "Rediseño del flujo y balanceo de estaciones con estándares de trabajo.",
+    "beneficio": "Reducción estimada del 20% en tiempos de ciclo.",
+    "recursos": "Dos semanas de relevamiento y un responsable de producción."
+  },
+  "problema": {
+    "descripcion": "El proceso actual tiene esperas entre estaciones y retrabajo.",
+    "causa_raiz": "Falta de balanceo de líneas y de estándares de trabajo.",
+    "datos_respaldo": "Registros de producción de los últimos tres meses.",
+    "consecuencias": "Mayor costo unitario y entregas demoradas."
+  },
+  "criterios_evaluacion": "Costo, tiempo, complejidad, riesgo y normativa aplicable.",
+  "alternativas": [
+    {
+      "nombre": "A",
+      "costo": "USD 10.000",
+      "tiempo": "8 semanas",
+      "riesgo": "Bajo",
+      "motivo": "Requiere inversión inicial."
+    },
+    {
+      "nombre": "B",
+      "costo": "USD 6.000",
+      "tiempo": "12 semanas",
+      "riesgo": "Medio",
+      "motivo": "Mayor tiempo de implementación."
+    }
+  ],
+  "solucion": {
+    "descripcion_tecnica": "Se propone reorganizar el flujo, balancear las estaciones y definir estándares de trabajo para reducir esperas y retrabajo.",
+    "criterios_diseno": "Balanceo de líneas, análisis de tiempos y definición de capacidad.",
+    "condiciones_implementacion": "No detener la producción durante el relevamiento y asegurar la disponibilidad del personal.",
+    "diagramas": "No aplica.",
+    "imagenes": []
+  },
+  "resultado": {
+    "beneficio_medible": "Reducción del 20% en tiempos de ciclo.",
+    "supuestos": "Demanda estable y disponibilidad del personal."
+  },
+  "licencia": {
+    "tipo": "Licencia de uso.",
+    "prohibicion": "No se permite la reventa del documento.",
+    "vigencia": "12 meses."
+  },
+  "anexos": {
+    "fuentes": "Registros internos del cliente.",
+    "normativas": "No aplica.",
+    "glosario": "Tiempo de ciclo: tiempo total de una unidad."
+  }
+}

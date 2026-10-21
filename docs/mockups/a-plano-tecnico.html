@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IRD — Dirección A · Plano técnico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F0EA; --ink:#111417; --muted:#5C6166; --line:rgba(17,20,23,.16);
+    --accent:#D9480F; --teal:#0B6B6B;
+    --mono:'IBM Plex Mono',ui-monospace,monospace; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--paper); color:var(--ink); font-family:var(--sans);
+    background-image:
+      linear-gradient(rgba(17,20,23,.055) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(17,20,23,.055) 1px,transparent 1px),
+      linear-gradient(rgba(17,20,23,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(17,20,23,.035) 1px,transparent 1px);
+    background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:11px}
+
+  /* nav */
+  header{border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:82px}
+  .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
+  .brand img{height:44px;width:auto;display:block}
+  .brand-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);border-left:1px solid var(--line);padding-left:14px;line-height:1.4;text-transform:uppercase}
+  .links{display:flex;gap:30px;align-items:center}
+  .links a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.01em;position:relative;padding-bottom:4px}
+  .links a:hover{border-bottom:1px solid var(--accent)}
+  .cta-nav{background:var(--ink);color:var(--paper)!important;padding:11px 20px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center;padding:76px 0 0}
+  .eyebrow{display:flex;align-items:center;gap:10px;color:var(--muted);margin-bottom:26px}
+  .eyebrow::before{content:'';width:9px;height:9px;background:var(--accent);display:block}
+  h1{font-size:clamp(38px,4.4vw,60px);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin-bottom:26px}
+  h1 em{font-style:normal;color:var(--teal)}
+  .lead{font-size:17px;line-height:1.65;color:#33383D;max-width:520px;margin-bottom:34px}
+  .actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+  .btn-solid{background:var(--accent);color:#fff;text-decoration:none;padding:16px 26px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--accent);transition:.2s}
+  .btn-solid:hover{background:transparent;color:var(--accent)}
+  .btn-text{color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:3px}
+  .btn-text span{color:var(--accent)}
+
+  /* title block */
+  .titleblock{margin-top:64px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);display:grid;grid-template-columns:repeat(4,1fr)}
+  .tb{padding:14px 18px;border-right:1px solid var(--line)}
+  .tb:last-child{border-right:0}
+  .tb span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:5px}
+  .tb strong{font-size:12.5px;font-weight:600;letter-spacing:.01em}
+
+  /* document sheet */
+  .sheet-wrap{position:relative;display:flex;justify-content:center;padding:10px 0 40px}
+  .sheet-wrap::before{content:'';position:absolute;inset:auto 0 20px 0;height:1px;background:var(--line)}
+  .sheet{
+    width:100%;max-width:410px;background:#fff;border:1px solid rgba(17,20,23,.22);
+    box-shadow:26px 26px 0 rgba(17,20,23,.06), 0 22px 50px rgba(17,20,23,.13);
+    padding:34px 32px;position:relative;z-index:2;
+  }
+  .sheet-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:2px solid #00B8B8;font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:#4A4F54;text-transform:uppercase}
+  .sheet h4{font-size:19px;line-height:1.15;letter-spacing:-.02em;margin:20px 0 6px;font-weight:700}
+  .sheet .sub{font-family:var(--mono);font-size:7.5px;letter-spacing:.12em;color:#D9480F;text-transform:uppercase;margin-bottom:14px}
+  .sheet p{font-size:10px;line-height:1.65;color:#4A4F54;margin-bottom:14px}
+  .sheet .k{font-family:var(--mono);font-size:7px;letter-spacing:.12em;color:#7A8085;text-transform:uppercase;margin:16px 0 6px;display:block}
+  .sheet table{width:100%;border-collapse:collapse;font-size:8px;font-family:var(--mono)}
+  .sheet th{text-align:left;font-weight:600;color:#7A8085;border-bottom:1px solid #D8D8D4;padding:4px 3px;text-transform:uppercase;letter-spacing:.06em;font-size:7px}
+  .sheet td{padding:5px 3px;border-bottom:1px solid #ECECE8;color:#2A2F34}
+  .sheet .tag{display:inline-block;background:#00B8B8;color:#fff;font-size:6.5px;padding:2px 5px;letter-spacing:.08em}
+  .stamp{position:absolute;right:26px;bottom:24px;border:1.5px solid #D9480F;color:#D9480F;font-family:var(--mono);font-size:7px;letter-spacing:.14em;padding:5px 8px;transform:rotate(-6deg);text-transform:uppercase}
+
+  /* section 2 */
+  .strip{padding:80px 0;border-bottom:1px solid var(--line)}
+  .strip-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start;margin-bottom:50px}
+  h2{font-size:clamp(26px,2.6vw,36px);letter-spacing:-.03em;line-height:1.12;font-weight:800}
+  h2 em{font-style:normal;color:var(--teal)}
+  .strip-head p{font-size:15.5px;line-height:1.7;color:#3A3F44;max-width:480px}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink)}
+  .step{padding:24px 20px 30px;border-right:1px solid var(--line);position:relative}
+  .step:last-child{border-right:0}
+  .step .num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;margin-bottom:34px;display:block}
+  .step h3{font-size:15px;margin-bottom:8px;letter-spacing:-.01em}
+  .step p{font-size:12.5px;line-height:1.6;color:var(--muted)}
+  .step::after{content:'';position:absolute;left:20px;bottom:0;width:0;height:2px;background:var(--accent);transition:.3s}
+  .step:hover::after{width:calc(100% - 40px)}
+
+  footer{padding:34px 0 90px;display:flex;justify-content:space-between;color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+
+  /* switcher */
+  .switcher{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(17,20,23,.94);padding:6px;display:flex;gap:4px;z-index:99;border-radius:2px}
+  .switcher a{color:#B9BFC4;text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border-radius:1px}
+  .switcher a.on{background:#F1F0EA;color:#111417}
+  .switcher span{color:#5C6166;font-family:var(--mono);font-size:9px;letter-spacing:.12em;padding:9px 12px;text-transform:uppercase}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:40px;padding-top:50px}
+    .sheet-wrap{order:-1}
+    .titleblock{grid-template-columns:1fr 1fr}
+    .strip-head{grid-template-columns:1fr;gap:24px}
+    .steps{grid-template-columns:1fr 1fr}
+    .step{border-bottom:1px solid var(--line)}
+    .links{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav>
+      <a class="brand" href="#">
+        <img src="../../assets/brand/Logo-Negro.svg" alt="IRD">
+        <span class="brand-tag">Ingeniería<br>Rápida de Diseño</span>
+      </a>
+      <div class="links">
+        <a href="#">Método</a>
+        <a href="#">El documento</a>
+        <a href="#">Laboratorio</a>
+        <a href="#">Sobre mí</a>
+        <a href="#" class="cta-nav">Contame tu problema</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow mono">Estudio técnico · Reconquista, Argentina</div>
+      <h1>El problema ya lo tenés.<br>Falta el <em>documento</em> que lo resuelve.</h1>
+      <p class="lead">Analizo el problema, evalúo alternativas con datos y normativa, y te entrego un documento técnico listo para ejecutar, fabricar o validar. Sin reuniones eternas. Sin humo.</p>
+      <div class="actions">
+        <a href="#" class="btn-solid">Contame tu problema</a>
+        <a href="#" class="btn-text">Ver un documento real <span>→</span></a>
+      </div>
+    </div>
+
+    <div class="sheet-wrap">
+      <div class="sheet">
+        <div class="sheet-top"><span>IRD · Documento de solución</span><span>SOL-001</span></div>
+        <h4>Optimización del proceso de valorización de biomasa</h4>
+        <div class="sub">Resumen ejecutivo · Rev. A</div>
+        <p>La línea pierde rendimiento por falta de balanceo entre etapas y retrabajo. Se propone rediseñar el flujo y estandarizar la operación.</p>
+        <span class="k">03 · Alternativas evaluadas</span>
+        <table>
+          <tr><th>Alt.</th><th>Costo</th><th>Plazo</th><th>Riesgo</th></tr>
+          <tr><td><span class="tag">B</span></td><td>USD 6.000</td><td>12 sem</td><td>Medio</td></tr>
+          <tr><td>A</td><td>USD 10.000</td><td>8 sem</td><td>Bajo</td></tr>
+          <tr><td>C</td><td>USD 4.200</td><td>16 sem</td><td>Alto</td></tr>
+        </table>
+        <span class="k">05 · Resultado esperado</span>
+        <p style="margin-bottom:0">Reducción estimada del 20% en tiempos de ciclo, con supuestos declarados y verificables.</p>
+        <div class="stamp">Confidencial</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="titleblock">
+    <div class="tb"><span>Proyecto</span><strong>Documento a medida</strong></div>
+    <div class="tb"><span>Entregable</span><strong>PDF + fuente LaTeX</strong></div>
+    <div class="tb"><span>Plazo típico</span><strong>10 a 15 días</strong></div>
+    <div class="tb"><span>Alcance</span><strong>Diseño, no ejecución</strong></div>
+  </div>
+
+  <section class="strip">
+    <div class="strip-head">
+      <h2>No vendo horas.<br>Entrego un <em>documento</em>.</h2>
+      <p>Cada solución sigue la misma estructura, para que puedas leerla rápido, discutirla con tu equipo y pasársela al taller o al profesional que la va a ejecutar. Sin partes faltantes y sin letra chica.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">01</span><h3>Problema y causa raíz</h3><p>Qué pasa, por qué pasa y qué evidencia lo respalda.</p></div>
+      <div class="step"><span class="num">02</span><h3>Alternativas</h3><p>Tres caminos comparados por costo, plazo y riesgo.</p></div>
+      <div class="step"><span class="num">03</span><h3>Solución</h3><p>La recomendación, con criterios de diseño y límites claros.</p></div>
+      <div class="step"><span class="num">04</span><h3>Resultado</h3><p>Beneficio medible, supuestos y normativa aplicable.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>IRD · Ingeniería Rápida de Diseño</span>
+    <span>Documento de muestra disponible</span>
+  </footer>
+</div>
+
+<div class="switcher">
+  <span>Dirección</span>
+  <a class="on" href="a-plano-tecnico.html">A · Plano técnico</a>
+  <a href="b-laboratorio.html">B · Laboratorio</a>
+  <a href="c-ficha-industrial.html">C · Ficha industrial</a>
+</div>
+</body>
+</html>

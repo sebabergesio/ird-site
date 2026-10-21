@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>IRD social card ES</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+  body {
+    position: relative;
+    background: #F1F0EA;
+    color: #111417;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(17,20,23,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17,20,23,.055) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+  .og {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    padding: 46px 60px 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .logo { width: 56px; height: 56px; display: block; }
+  .brand {
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 11px;
+    line-height: 1.45;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .brand span { color: #5D6469; font-weight: 400; letter-spacing: .14em; }
+  .eyebrow {
+    margin: 26px 0 10px;
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #C2410C;
+    font-weight: 700;
+  }
+  h1 {
+    margin: 0;
+    max-width: 690px;
+    font-size: 76px;
+    line-height: .94;
+    letter-spacing: -.055em;
+    font-weight: 760;
+  }
+  h1 em { color: #0B6B6B; font-style: normal; }
+  .sub {
+    max-width: 620px;
+    margin: 18px 0 0;
+    font-size: 21px;
+    line-height: 1.32;
+    color: #343B40;
+  }
+  .bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    border-top: 1px solid rgba(17,20,23,.18);
+    padding-top: 15px;
+  }
+  .who {
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 10.5px;
+    line-height: 1.55;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #343B40;
+  }
+  .who strong { color: #111417; }
+  .tag {
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #0B6B6B;
+    white-space: nowrap;
+  }
+  .sheet {
+    position: absolute;
+    right: 58px;
+    top: 80px;
+    width: 318px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid rgba(17,20,23,.3);
+    box-shadow: 18px 18px 0 rgba(17,20,23,.09), 0 22px 48px rgba(17,20,23,.16);
+    transform: rotate(2.4deg);
+  }
+  .sheet img { display: block; width: 100%; height: auto; }
+  .sheet::before {
+    content: "MUESTRA  /  SOL-001";
+    position: absolute;
+    left: -1px;
+    top: -25px;
+    padding: 5px 10px 6px;
+    background: #C2410C;
+    color: #fff;
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="og" id="og">
+    <div>
+      <div class="top">
+        <img class="logo" src="../../site/assets/img/logo-negro.svg" alt="">
+        <div class="brand">IRD<br><span>Rapid Design Engineering</span></div>
+          </div>
+      <div class="eyebrow">Documento de solución técnica / proceso · equipos · energía</div>
+      <h1>Un problema,<br><em>documentado.</em></h1>
+      <p class="sub">Ocho secciones fijas, alternativas comparadas y límites explícitos. Para que un profesional habilitado lo valide y firme.</p>
+    </div>
+    <div class="bottom">
+      <div class="who"><strong>Sebastián Bergesio</strong><br>Fundador · IRD</div>
+      <div class="tag">Muestra incluida · 5 páginas</div>
+    </div>
+  </div>
+  <div class="sheet">
+    <img src="../../site/assets/img/muestra-p1.jpg" alt="">
+  </div>
+  <div class="sheet-note">Muestra ilustrativa · no es un caso real</div>
+</body>
+</html>

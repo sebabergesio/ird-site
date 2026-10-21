@@ -1,0 +1,261 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm,top=3cm,bottom=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{array}
+
+% ============================================================
+% IRD COLORS (AMOLED BLACK, CYAN #00FFFF, ORANGE #FF5F1F)
+% ============================================================
+\definecolor{irdblack}{HTML}{000000}
+\definecolor{irdcyan}{HTML}{00FFFF}
+\definecolor{irdorange}{HTML}{FF5F1F}
+\definecolor{irdlight}{HTML}{E6FFFF}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=irdblack,
+    urlcolor=irdblack,
+    pdftitle={IRD - Solution Document (sample)},
+    pdfauthor={Sebastian Bergesio}
+}
+
+% ============================================================
+% SECTION STYLE (black text, cyan rule)
+% ============================================================
+\titleformat{\section}
+    {\Large\bfseries\color{irdblack}}
+    {\thesection}{0.8em}{}
+    [\vspace{-0.4em}\textcolor{irdcyan}{\rule{\textwidth}{2pt}}]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{irdblack}}
+    {\thesubsection}{0.6em}{}
+
+\titlespacing*{\section}{0pt}{1.5em}{0.8em}
+\titlespacing*{\subsection}{0pt}{1em}{0.4em}
+
+% ============================================================
+% HEADER / FOOTER
+% ============================================================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\small\textcolor{irdblack}{IRD --- Rapid Design Engineering}}
+\fancyhead[R]{\small\textcolor{irdblack}{\thepage}}
+\fancyfoot[C]{\footnotesize\textcolor{irdblack}{Sebastián Bergesio · Illustrative sample · Not a real case}}
+
+% ============================================================
+% CUSTOM BOXES
+% ============================================================
+\newtcolorbox{infobox}[1][]{
+    colback=irdlight,
+    colframe=irdcyan,
+    boxrule=0pt,
+    leftrule=4pt,
+    arc=0pt,
+    fonttitle=\bfseries\color{irdblack},
+    coltitle=irdblack,
+    title=#1,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    toprule=0pt, bottomrule=0pt, rightrule=0pt
+}
+
+\newtcolorbox{alertbox}[1][]{
+    colback=white,
+    colframe=irdorange,
+    boxrule=1.2pt,
+    arc=2pt,
+    fonttitle=\bfseries\color{irdblack},
+    title=#1,
+    left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+\newcommand{\campo}[2]{\noindent\textbf{\textcolor{irdblack}{#1:}} \textcolor{irdblack}{#2}\par\vspace{0.3em}}
+
+% ============================================================
+% DOCUMENT
+% ============================================================
+\begin{document}
+
+% ---------- COVER ----------
+\begin{titlepage}
+\centering
+
+\vspace*{0.2cm}
+\includegraphics[width=5cm, height=5cm, keepaspectratio]{LogoNegro.png}
+
+\vspace{1.0cm}
+
+{\color{irdcyan}\rule{\textwidth}{3pt}}\\[0.15cm]
+{\color{irdorange}\rule{\textwidth}{1.5pt}}\\[0.5cm]
+
+{\fontsize{34}{40}\selectfont\bfseries\color{irdblack} SOLUTION\\[0.2cm] DOCUMENT}\\[0.5cm]
+
+{\color{irdcyan}\rule{\textwidth}{3pt}}\\[0.15cm]
+{\color{irdorange}\rule{\textwidth}{1.5pt}}\\[0.8cm]
+
+{\Large\color{irdblack}\textit{Rapid Design Engineering}}\\[1.2cm]
+
+\begin{tcolorbox}[
+    width=0.85\textwidth,
+    colback=irdlight, colframe=irdcyan,
+    boxrule=0pt, leftrule=5pt, arc=0pt,
+    left=12pt, right=12pt, top=10pt, bottom=10pt
+]
+\large
+\campo{Solution code}{SOL-001}
+\campo{Solution title}{Process Optimization}
+\campo{Client}{Example SME S.A.}
+\campo{Date}{2026-10-21}
+\campo{Version}{1.0}
+\vspace{0.35cm}
+{\small\itshape The data, values and results in this sample are illustrative.}
+\end{tcolorbox}
+
+\vfill
+
+{\large\bfseries\color{irdblack} Sebastián Bergesio}\\[0.3cm]
+{\color{irdblack} Founder · IRD}\\[0.2cm]
+{\small\color{irdblack} sebabergesio472@gmail.com}\\[0.6cm]
+{\small\color{irdblack} Abbreviated sample · Illustrative content · Not a real case}\\[0.15cm]
+{\small\color{irdblack} A real document is 18–25 pages.}
+
+\vspace{0.3cm}
+
+\end{titlepage}
+
+% ---------- CONTENTS ----------
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Executive summary}
+% ============================================================
+
+\begin{infobox}[Solution summary]
+\campo{Problem in 3 lines}{The production line loses time to bottlenecks and rework between stations.}
+\campo{Solution in 3 lines}{Process redesign and station balancing with work standards.}
+\campo{Expected benefit}{Estimated 20\% reduction in cycle times.}
+\campo{Resources needed to implement}{Two weeks of assessment and one production owner.}
+\end{infobox}
+
+% ============================================================
+\section{Problem identified}
+% ============================================================
+
+\subsection{Problem description}
+\campo{Description}{The current process has waiting time between stations and rework.}
+
+\subsection{Root cause}
+\campo{Root cause (not the symptom)}{Lack of line balancing and work standards.}
+
+\subsection{Supporting data}
+\campo{Verifiable sources}{Production records from the last three months.}
+
+\subsection{Consequences of not solving it}
+\campo{Consequences}{Higher unit cost and delayed deliveries.}
+
+% ============================================================
+\section{Alternatives evaluated}
+% ============================================================
+
+\campo{Evaluation criteria (cost, time, complexity, risk, standards)}{Cost, time, complexity, risk and applicable standards.}
+
+\vspace{0.5cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}p{3cm}p{2.2cm}p{2.2cm}p{2.2cm}>{\raggedright\arraybackslash}p{4.4cm}@{}}
+\toprule
+\textbf{\color{irdblack}Alternative} & \textbf{\color{irdblack}Cost} & \textbf{\color{irdblack}Time} & \textbf{\color{irdblack}Risk} & \textbf{\color{irdblack}Reason for rejection} \\
+\midrule
+Alternative A & USD 10,000 & 8 weeks & Low & Requires initial investment. \\
+\addlinespace
+Alternative B & USD 6,000 & 12 weeks & Medium & Longer implementation time. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section{Recommended solution}
+% ============================================================
+
+\subsection{Technical description}
+\campo{Description}{Reorganize the flow, balance the stations and define work standards to reduce waiting and rework.}
+
+\subsection{Design and calculation criteria}
+\campo{Parameters and applicable standards}{Line balancing, time analysis and capacity definition.}
+
+\subsection{Implementation conditions}
+\campo{What is needed / what to avoid}{Do not stop production during the assessment and ensure staff availability.}
+
+\subsection{Diagrams and schematics}
+\campo{Insert diagrams, tables or schematics if applicable}{Not applicable.}
+
+% ============================================================
+\section{Expected result}
+% ============================================================
+
+\campo{Measurable benefit (savings, time reduction, efficiency improvement)}{20\% reduction in cycle times.}
+\campo{Assumptions used in the calculation}{Stable demand and staff availability.}
+
+% ============================================================
+\section{What this solution does NOT include}
+% ============================================================
+
+\begin{alertbox}[Deliverable limits]
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt]
+    \item Physical prototype.
+    \item Detailed engineering development.
+    \item Project execution.
+    \item Construction management.
+    \item Guarantee of execution results (depends on the implementer).
+\end{itemize}
+\end{alertbox}
+
+% ============================================================
+\section{Terms of use and license}
+% ============================================================
+
+\campo{License type (use, not sale)}{License of use.}
+\campo{Prohibition of reproduction and distribution}{Resale of the document is not permitted.}
+\campo{Solution validity (if applicable)}{12 months.}
+
+% ============================================================
+\section{Annexes}
+% ============================================================
+
+\subsection{Sources consulted}
+\campo{Sources}{Client's internal records.}
+
+\subsection{Standards cited}
+\campo{Standards}{Not applicable.}
+
+\subsection{Technical glossary}
+\campo{Glossary (if the client is not an engineer)}{Cycle time: total time for one unit.}
+
+\vfill
+
+\begin{center}
+{\color{irdorange}\rule{0.5\textwidth}{1pt}}\\[0.3cm]
+{\small\color{irdblack} Document generated by IRD --- Rapid Design Engineering}\\
+{\small\color{irdblack} Sebastián Bergesio · sebabergesio472@gmail.com}
+\end{center}
+
+\end{document}
