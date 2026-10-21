@@ -645,8 +645,8 @@ h2 em {
 }
 
 .spec {
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
 }
 
 .spec-head {
@@ -706,7 +706,7 @@ h2 em {
 .band {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 2px solid var(--ink);
 }
 
 .band > div {
@@ -746,12 +746,18 @@ h2 em {
 /* ---------- Sections ---------- */
 
 .section {
-  padding: 88px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 96px 0;
+  border-top: 2px solid var(--ink);
 }
 
 .section-alt {
-  background: rgba(17, 20, 23, .035);
+  background: rgba(17, 20, 23, .07);
+}
+
+/* Un bloque que ya termina en corte no repite el corte al empezar la sección. */
+.band + .section,
+.page-hero + .section {
+  border-top: 0;
 }
 
 .section-dark {
@@ -778,16 +784,31 @@ h2 em {
   grid-template-columns: .95fr 1.05fr;
   gap: 64px;
   align-items: start;
-  margin-bottom: 44px;
+  margin-bottom: 52px;
 }
 
 .section-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--mono);
   font-size: 9.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 15px;
+}
+
+.section-num::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+
+.cta .section-num::before {
+  background: var(--accent-on-dark);
 }
 
 h2 {
@@ -1467,6 +1488,63 @@ h2 {
   color: var(--muted);
 }
 
+/* Cotización MEP en vivo */
+.price-ars {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.price-ars-inline:not(:empty)::before {
+  content: ' · ';
+}
+
+.price .price-ars {
+  display: block;
+  margin-top: 9px;
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.price-card.featured .price-ars {
+  color: var(--accent-on-dark);
+}
+
+.rate-note {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .06em;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 820px;
+}
+
+.pricing .rate-note {
+  grid-column: 1 / -1;
+}
+
+.rate-note a {
+  color: var(--teal);
+}
+
+.footer-rate {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: .06em;
+  line-height: 1.6;
+  color: #9BA3A8;
+}
+
+.rate-note[data-state="error"],
+.footer-rate[data-state="error"] {
+  color: var(--accent-bright);
+}
+
 .pricing-extra {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1713,7 +1791,7 @@ h2 {
 
 .page-hero {
   padding: 62px 0 48px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 2px solid var(--ink);
 }
 
 .page-hero-grid {

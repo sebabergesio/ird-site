@@ -5,6 +5,12 @@
 **Alcance:** Sitio completo en español e inglés. 6 páginas por idioma + 404 bilingüe. Sin e-commerce.
 **Autor:** Sebastián Bergesio / IRD
 
+> **Actualización 21/10/2026:** el sitio publicado usa **Avellaneda, Santa Fe** como
+> base, entrega **PDF final** (sin fuente LaTeX), muestra precios en **USD y ARS**
+> con cotización MEP en vivo desde `dolarapi.com` (`site/assets/js/rates.js`) y
+> aclara "documentos en español e inglés, atención en español". Donde este
+> documento diga Reconquista, LaTeX o precios solo en USD, vale esta actualización.
+
 ---
 
 ## 1. Resumen

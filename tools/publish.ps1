@@ -63,6 +63,7 @@ $required = @(
     "sitemap.xml",
     "assets\css\style.css",
     "assets\js\site.js",
+    "assets\js\rates.js",
     "assets\docs\muestra-SOL-001.pdf",
     "assets\docs\muestra-SOL-001-en.pdf",
     "assets\img\og-ird-es.png",

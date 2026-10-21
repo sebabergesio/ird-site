@@ -47,7 +47,20 @@ BANNED = [
     "10–15 días",
     "lorem ipsum",
     "Lorem ipsum",
+    "LaTeX",
+    "PDF +",
+    "fuente editable",
+    "editable source",
+    "Reconquista, Santa Fe",
 ]
+PRICE_PAGES = {
+    "index.html",
+    "documento.html",
+    "contacto.html",
+    "en/index.html",
+    "en/document.html",
+    "en/contact.html",
+}
 SKIP_SCHEMES = ("http://", "https://", "mailto:", "tel:", "javascript:", "data:")
 
 
@@ -222,6 +235,19 @@ def check_page(path: Path, root: Path) -> list[str]:
             target = resolve(path, href)
             if target and not target.exists():
                 errors.append(f"stylesheet inexistente: {href}")
+
+    for value in re.findall(r'data-usd="([^"]*)"', raw):
+        if not re.fullmatch(r"\d+(?:-\d+)?\+?", value):
+            errors.append(f"data-usd inválido: {value}")
+
+    if rel in PRICE_PAGES:
+        slots = len(re.findall(r"data-price-ars", raw))
+        if slots < 3:
+            errors.append(f"precios en ARS insuficientes: {slots}")
+    if "data-rate-note" not in raw:
+        errors.append("sin nota de cotización (data-rate-note)")
+    if "assets/js/rates.js" not in raw:
+        errors.append("no carga assets/js/rates.js")
 
     lower = raw.lower()
     for banned in BANNED:

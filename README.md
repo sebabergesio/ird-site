@@ -18,7 +18,7 @@ mantenerlo. Una sola carpeta, una sola raíz de git.
 | `var/` | Salidas descartables: `dist`, ZIP, QA, compilaciones. | No |
 
 **Regla de oro:** se edita `src/`, se genera `site/` y se publica solo `site/`.
-No se edita el HTML de `site/` a mano.
+No se edita el HTML de `site/` a mano; el CSS y el JS sí viven en `site/assets/`.
 
 ## Comandos
 
@@ -66,6 +66,9 @@ python -m unittest discover -s tools/tests -v
 ## Estado del proyecto
 
 - El sitio actual es estático, bilingüe ES/EN y no está desplegado.
+- Los precios se muestran en USD (ancla) y en ARS con cotización MEP en vivo
+  (`site/assets/js/rates.js`, fuente: `dolarapi.com`). Si la consulta falla,
+  queda visible el precio en USD y se avisa en pantalla.
 - El dominio sigue como placeholder: `https://ird.example`.
 - El catálogo de soluciones, el panel remoto, los pagos (Mercado Pago y PayPal)
   y la entrega automática están en etapa de diseño. No hay código de tienda

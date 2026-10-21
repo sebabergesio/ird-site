@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms, payment and privacy | IRD</title>
-<meta name="description" content="IRD&#x27;s engagement terms, USD pricing, IPC adjustment, deadlines, intellectual property and privacy. October 2026 version.">
+<meta name="description" content="IRD&#x27;s engagement terms, USD and ARS pricing at the day&#x27;s MEP rate, IPC adjustment, deadlines, intellectual property and privacy. October 2026 version.">
 <meta name="author" content="Sebastián Bergesio">
 <meta name="theme-color" content="#F1F0EA">
 <script>document.documentElement.classList.add('js');</script>
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="es_AR">
 <meta property="og:title" content="Terms, payment and privacy | IRD">
-<meta property="og:description" content="IRD&#x27;s engagement terms, USD pricing, IPC adjustment, deadlines, intellectual property and privacy. October 2026 version.">
+<meta property="og:description" content="IRD&#x27;s engagement terms, USD and ARS pricing at the day&#x27;s MEP rate, IPC adjustment, deadlines, intellectual property and privacy. October 2026 version.">
 <meta property="og:url" content="https://ird.example/en/terms.html">
 <meta property="og:image" content="https://ird.example/assets/img/og-ird-en.png">
 <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
 <meta property="og:image:alt" content="Terms, payment and privacy | IRD">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Terms, payment and privacy | IRD">
-<meta name="twitter:description" content="IRD&#x27;s engagement terms, USD pricing, IPC adjustment, deadlines, intellectual property and privacy. October 2026 version.">
+<meta name="twitter:description" content="IRD&#x27;s engagement terms, USD and ARS pricing at the day&#x27;s MEP rate, IPC adjustment, deadlines, intellectual property and privacy. October 2026 version.">
 <meta name="twitter:image" content="https://ird.example/assets/img/og-ird-en.png">
 <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,7 +108,7 @@
       <p class="legal-meta">IRD · Sebastián Alan Bergesio · October 2026 version</p>
 
       <h2 id="identification">01 · Identification</h2>
-      <p>This site and the services described are operated by <strong>Sebastián Alan Bergesio</strong>, trading as <strong>IRD — Rapid Design Engineering</strong>, based in Reconquista, Santa Fe, Argentina.</p>
+      <p>This site and the services described are operated by <strong>Sebastián Alan Bergesio</strong>, trading as <strong>IRD — Rapid Design Engineering</strong>, based in Avellaneda, Santa Fe, Argentina.</p>
       <p>Contact: <a href="mailto:sebabergesio472@gmail.com">sebabergesio472@gmail.com</a>. The tax details required for invoicing are provided when a project is confirmed.</p>
 
       <h2 id="scope">02 · Purpose and scope</h2>
@@ -118,10 +118,10 @@
 
       <h2 id="quote">03 · Quotes and prices</h2>
       <p>Quotes are issued in writing and include scope, deliverables, timeline and payment method. They are valid for <strong>7 days</strong> from issue. There is no fixed price without a written scope.</p>
-      <p>Published prices are indicative and expressed in <strong>USD</strong>. The final price depends on complexity, the quality of the available data and the agreed scope. The initial consultation costs USD 80 and is credited toward the project if the client moves forward.</p>
+      <p>Published prices are indicative and expressed in <strong>USD</strong> and <strong>ARS</strong>. The USD value is the anchor; ARS amounts are calculated at the day's MEP exchange rate + 5%, checked online (source: dolarapi.com). The final price depends on complexity, the quality of the available data and the agreed scope. The initial consultation costs USD 80 and is credited toward the project if the client moves forward.</p>
 
       <h2 id="payment">04 · Payment method and adjustment</h2>
-      <p>In Argentina, USD prices are charged in pesos at the <strong>day's MEP exchange rate + 5%</strong>. The quote is valid for 7 days. Unpaid balances are adjusted by the <strong>IPC (INDEC)</strong> from the quote date until payment.</p>
+      <p>In Argentina, USD prices are charged in pesos at the <strong>day's MEP exchange rate + 5%</strong> (live rate published by dolarapi.com). The quote is valid for 7 days. Unpaid balances are adjusted by the <strong>IPC (INDEC)</strong> from the quote date until payment.</p>
       <p>The standard method is <strong>50% in advance and 50% on delivery</strong>. For projects longer than 30 days, <strong>40% / 30% / 30%</strong> may be agreed. For international clients, the payment method is coordinated when the project is confirmed.</p>
       <p>Late payment is governed by applicable Argentine law. IRD may suspend delivery if the client fails to make the agreed payments.</p>
 
@@ -169,7 +169,7 @@
 
       <h2 id="legal-contact">14 · Contact</h2>
       <p>For questions about these terms, payments or privacy: <a href="mailto:sebabergesio472@gmail.com">sebabergesio472@gmail.com</a>.</p>
-      <p class="legal-meta">Version: October 2026 · IRD · Reconquista, Santa Fe, Argentina</p>
+      <p class="legal-meta">Version: October 2026 · IRD · Avellaneda, Santa Fe, Argentina</p>
     </div>
   </div>
 </section>
@@ -180,7 +180,7 @@
     <div class="footer-brand">
       <a href="index.html" aria-label="IRD — Rapid Design Engineering — Home"><img src="../assets/img/logo-blanco.svg" alt="IRD" width="56" height="56"></a>
       <p>Technical solution documents for industrial and process problems.</p>
-      <p class="footer-loc mono">Reconquista, Santa Fe, Argentina</p>
+      <p class="footer-loc mono">Avellaneda, Santa Fe, Argentina</p>
     </div>
     <div class="footer-col">
       <p class="footer-title mono">Navigation</p>
@@ -193,6 +193,7 @@
       <p class="footer-title mono">Contact</p>
       <a href="mailto:sebabergesio472@gmail.com">sebabergesio472@gmail.com</a>
       <p>Remote work across Argentina and worldwide.</p>
+      <p class="footer-rate" data-rate-note aria-live="polite"></p>
     </div>
     <div class="footer-col">
       <p class="footer-title mono">Legal</p>
@@ -207,5 +208,6 @@
   </div>
 </footer>
 <script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/rates.js" defer></script>
 </body>
 </html>

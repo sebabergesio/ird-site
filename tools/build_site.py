@@ -71,7 +71,7 @@ COPY = {
         "skip": "Saltar al contenido",
         "home_aria": "IRD — Ingeniería Rápida de Diseño — Inicio",
         "footer_tagline": "Documentos técnicos de solución para problemas industriales y de proceso.",
-        "location": "Reconquista, Santa Fe, Argentina",
+        "location": "Avellaneda, Santa Fe, Argentina",
         "remote": "Trabajo remoto en todo el país y el exterior.",
         "nav_title": "Navegación",
         "contact_title": "Contacto",
@@ -93,7 +93,7 @@ COPY = {
         "skip": "Skip to content",
         "home_aria": "IRD — Rapid Design Engineering — Home",
         "footer_tagline": "Technical solution documents for industrial and process problems.",
-        "location": "Reconquista, Santa Fe, Argentina",
+        "location": "Avellaneda, Santa Fe, Argentina",
         "remote": "Remote work across Argentina and worldwide.",
         "nav_title": "Navigation",
         "contact_title": "Contact",
@@ -128,13 +128,13 @@ PAGES = [
     Page(
         "home", "es", "index.html",
         "IRD — Documento técnico de solución | Sebastián Bergesio",
-        "Analizo el problema, comparo alternativas y entrego un documento técnico de solución. Desde USD 1.200. Trabajo remoto en Argentina y el exterior.",
+        "Analizo el problema, comparo alternativas y entrego un documento técnico de solución en PDF. Desde USD 1.200. Precios en USD y ARS al MEP del día.",
         "home", "assets/img/og-ird-es.png", "page-home",
     ),
     Page(
         "documento", "es", "documento.html",
         "El documento de solución: qué incluye y cuánto cuesta | IRD",
-        "Qué incluye el documento de solución de IRD: 8 secciones, 3 alternativas comparadas, 15–25 días y entrega en PDF y LaTeX. Desde USD 1.200.",
+        "Qué incluye el documento de solución de IRD: 8 secciones, 3 alternativas comparadas, 15–25 días y entrega en PDF final. Desde USD 1.200, en USD y ARS.",
         "documento", "assets/img/og-ird-es.png", "page-documento",
     ),
     Page(
@@ -158,19 +158,19 @@ PAGES = [
     Page(
         "terminos", "es", "terminos.html",
         "Términos, pagos y privacidad | IRD",
-        "Condiciones de contratación, pagos en USD, ajuste por IPC, plazos, propiedad intelectual y privacidad de IRD. Versión octubre 2026.",
+        "Condiciones de contratación, pagos en USD y ARS al MEP del día, ajuste por IPC, plazos, propiedad intelectual y privacidad de IRD. Versión octubre 2026.",
         "terminos", "assets/img/og-ird-es.png", "page-terminos",
     ),
     Page(
         "home", "en", "en/index.html",
         "IRD — Technical solution document | Sebastián Bergesio",
-        "I analyze the problem, compare alternatives and deliver a technical solution document. From USD 1,200. Remote work across Argentina and worldwide.",
+        "I analyze the problem, compare alternatives and deliver a technical solution document as a PDF. From USD 1,200. Prices in USD and ARS at the day's MEP rate.",
         "home", "assets/img/og-ird-en.png", "page-home",
     ),
     Page(
         "documento", "en", "en/document.html",
         "The solution document: what it includes and what it costs | IRD",
-        "What IRD's solution document includes: 8 sections, 3+ compared alternatives, 15–25 days, PDF and LaTeX. From USD 1,200.",
+        "What IRD's solution document includes: 8 sections, 3+ compared alternatives, 15–25 days, final PDF. From USD 1,200, in USD and ARS.",
         "documento", "assets/img/og-ird-en.png", "page-documento",
     ),
     Page(
@@ -194,7 +194,7 @@ PAGES = [
     Page(
         "terminos", "en", "en/terms.html",
         "Terms, payment and privacy | IRD",
-        "IRD's engagement terms, USD pricing, IPC adjustment, deadlines, intellectual property and privacy. October 2026 version.",
+        "IRD's engagement terms, USD and ARS pricing at the day's MEP rate, IPC adjustment, deadlines, intellectual property and privacy. October 2026 version.",
         "terminos", "assets/img/og-ird-en.png", "page-terminos",
     ),
     Page(
@@ -299,6 +299,7 @@ def render_footer(page: Page) -> str:
       <p class="footer-title mono">{c['contact_title']}</p>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
       <p>{c['remote']}</p>
+      <p class="footer-rate" data-rate-note aria-live="polite"></p>
     </div>
     <div class="footer-col">
       <p class="footer-title mono">{c['legal_title']}</p>
