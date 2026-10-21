@@ -16,6 +16,7 @@
   --teal-dark: #084F4F;
   --accent: #C2410C;
   --accent-bright: #D9480F;
+  --accent-on-dark: #F97316;
   --white: #FFFFFF;
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
   --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -567,7 +568,7 @@ h2 em {
   font-family: var(--mono);
   font-size: 7.5px;
   letter-spacing: .12em;
-  color: var(--accent-bright);
+  color: var(--accent);
   text-transform: uppercase;
   margin-bottom: 13px;
 }
@@ -583,7 +584,7 @@ h2 em {
   font-family: var(--mono);
   font-size: 7px;
   letter-spacing: .12em;
-  color: #7A8085;
+  color: #5C6166;
   text-transform: uppercase;
   margin: 15px 0 6px;
   display: block;
@@ -599,7 +600,7 @@ h2 em {
 .sheet th {
   text-align: left;
   font-weight: 600;
-  color: #7A8085;
+  color: #5C6166;
   border-bottom: 1px solid #D8D8D4;
   padding: 4px 3px;
   text-transform: uppercase;
@@ -1370,7 +1371,7 @@ h2 {
 }
 
 .price-card.featured .kicker {
-  color: var(--accent-bright);
+  color: var(--accent-on-dark);
 }
 
 .price-card h3 {
@@ -1439,7 +1440,7 @@ h2 {
 }
 
 .price-card.featured .price-list li::before {
-  color: var(--accent-bright);
+  color: var(--accent-on-dark);
 }
 
 .price-card .btn {
@@ -1448,14 +1449,14 @@ h2 {
 }
 
 .price-card.featured .btn-solid {
-  background: var(--accent-bright);
-  border-color: var(--accent-bright);
+  background: var(--accent);
+  border-color: var(--accent);
   color: var(--white);
 }
 
 .price-card.featured .btn-solid:hover {
   background: transparent;
-  color: var(--accent-bright);
+  color: var(--accent-on-dark);
 }
 
 .price-note {
@@ -1576,6 +1577,10 @@ h2 {
   line-height: 1.65;
   color: #B9BFC4;
   max-width: 560px;
+}
+
+.cta .section-num {
+  color: var(--accent-on-dark);
 }
 
 .cta-actions {
@@ -2596,7 +2601,9 @@ h2 {
   }
 
   .doc-pages {
-    gap: 7px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: 340px;
   }
 
   .page-thumb:nth-child(2) {
@@ -2604,8 +2611,8 @@ h2 {
   }
 
   .thumb-label {
-    font-size: 6.5px;
-    padding: 5px;
+    font-size: 8px;
+    padding: 7px;
   }
 
   .about-teaser {
@@ -2648,7 +2655,55 @@ h2 {
   }
 
   .table {
-    min-width: 540px;
+    min-width: 0;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table tr {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .table td {
+    border-bottom: 0;
+    padding: 7px 14px;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .table td:first-child {
+    padding-top: 14px;
+  }
+
+  .table td:last-child {
+    padding-bottom: 14px;
+  }
+
+  .table .num {
+    white-space: normal;
   }
 
   .error-page {
