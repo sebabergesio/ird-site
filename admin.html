@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | IRD</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #050505; --panel-bg: #111111; --cyan: #00FFFF; --orange: #FF5F1F; --text: #FFFFFF; --muted: #A0A0A0; --border: #333333; --danger: #ff3333; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        header { background-color: var(--panel-bg); border-bottom: 1px solid var(--border); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; height: 70px; flex-shrink: 0; }
+        header h1 { font-size: 1.2rem; color: var(--cyan); display: flex; align-items: center; gap: 10px; }
+        .btn-download { background: var(--orange); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 900; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-download:hover { background: #ff4400; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255, 95, 31, 0.5); }
+        .main-container { display: grid; grid-template-columns: 350px 1fr; height: calc(100vh - 70px); overflow: hidden; }
+        .sidebar { background-color: var(--bg); border-right: 1px solid var(--border); overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-new { background: rgba(0, 255, 255, 0.1); color: var(--cyan); border: 1px dashed var(--cyan); padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; text-align: center; }
+        .btn-new:hover { background: var(--cyan); color: var(--bg); border-style: solid; }
+        .item-card { background: var(--panel-bg); border: 1px solid var(--border); border-radius: 8px; padding: 15px; cursor: pointer; transition: 0.2s; position: relative; }
+        .item-card:hover { border-color: var(--cyan); transform: translateX(5px); }
+        .item-card.active { border-color: var(--cyan); background: rgba(0, 255, 255, 0.05); }
+        .item-type { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 5px; display: inline-block; }
+        .type-sol { color: var(--orange); }
+        .type-prob { color: var(--cyan); }
+        .item-card h3 { font-size: 1rem; margin-bottom: 5px; }
+        .item-card p { font-size: 0.8rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .workspace { background-color: var(--panel-bg); padding: 40px; overflow-y: auto; display: flex; flex-direction: column; }
+        .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--muted); text-align: center; }
+        .form-container { display: none; max-width: 700px; width: 100%; margin: 0 auto; }
+        .form-container.active { display: block; }
+        .form-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        .form-header h2 { color: var(--cyan); font-size: 1.8rem; }
+        .btn-delete { background: rgba(255, 51, 51, 0.1); color: var(--danger); border: 1px solid var(--danger); padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-delete:hover { background: var(--danger); color: white; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+        input, select, textarea { width: 100%; padding: 12px 15px; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 6px; font-size: 1rem; transition: 0.3s; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 10px rgba(0, 255, 255, 0.1); }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .btn-save { background: var(--cyan); color: var(--bg); border: none; padding: 15px; border-radius: 6px; font-size: 1.1rem; font-weight: 900; cursor: pointer; width: 100%; margin-top: 20px; transition: 0.3s; }
+        .btn-save:hover { background: white; box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
+        #toast-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 10px; z-index: 9999; }
+        .toast { background: var(--cyan); color: var(--bg); padding: 15px 25px; border-radius: 8px; font-weight: bold; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: slideIn 0.3s ease-out forwards; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⚡ Panel de Control IRD</h1>
+        <button class="btn-download" onclick="descargarData()">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Descargar data.js
+        </button>
+    </header>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <button class="btn-new" onclick="nuevoProyecto()">+ Nuevo Proyecto</button>
+            <div id="lista-proyectos"></div>
+        </div>
+
+        <div class="workspace">
+            <div class="empty-state" id="empty-state">
+                <svg width="64" height="64" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <h2>Seleccioná un proyecto</h2>
+                <p>Elegí un proyecto de la lista de la izquierda para editarlo, o creá uno nuevo.</p>
+            </div>
+
+            <div class="form-container" id="formulario">
+                <div class="form-header">
+                    <h2 id="form-title">Editar Proyecto</h2>
+                    <button class="btn-delete" id="btn-delete" onclick="borrarProyecto()">Borrar Proyecto</button>
+                </div>
+
+                <input type="hidden" id="edit-id">
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Tipo de Proyecto</label>
+                        <select id="tipo" onchange="toggleCampos()">
+                            <option value="problema">Problema (Laboratorio)</option>
+                            <option value="solucion">Solución (Catálogo)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="campo-codigo" style="display:none;">
+                        <label>Código (Ej: SOL-002)</label>
+                        <input type="text" id="codigo">
+                    </div>
+                    <div class="form-group" id="campo-precio" style="display:none;">
+                        <label>Precio (solo números, Ej: 45000)</label>
+                        <input type="number" id="precio">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="titulo">
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción corta (para la tarjeta)</label>
+                    <textarea id="descripcion" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Enlace de la ficha</label>
+                    <input type="text" id="link" placeholder="Ej: Problemas/problema-001.html">
+                    <small style="display: block; margin-top: 6px; color: var(--muted); font-size: 0.8rem;">Ruta del archivo HTML de la ficha. Si lo dejás vacío, se genera automáticamente.</small>
+                </div>
+
+                <div id="campos-problema" class="row">
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="estado">
+                            <option value="En investigación">En investigación</option>
+                            <option value="Analizando datos">Analizando datos</option>
+                            <option value="Diseño preliminar">Diseño preliminar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Color</label>
+                        <select id="color">
+                            <option value="cyan">Celeste</option>
+                            <option value="orange">Naranja</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="campo-progreso">
+                    <label>Progreso (%)</label>
+                    <input type="number" id="progreso" min="0" max="100" value="0">
+                </div>
+
+                <button class="btn-save" onclick="guardarProyecto()">💾 Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="data.js"></script>
+    <script>
+        let misDatos = [...IRD_DATA];
+        let indexEditando = -1;
+
+        function init() { renderizarLista(); }
+
+        function renderizarLista() {
+            const contenedor = document.getElementById('lista-proyectos');
+            contenedor.innerHTML = '';
+            misDatos.forEach((item, index) => {
+                const esProblema = item.tipo === 'problema';
+                const claseTipo = esProblema ? 'type-prob' : 'type-sol';
+                const textoTipo = esProblema ? 'Problema' : 'Solución';
+                const subtitulo = esProblema ? `${item.progreso}% - ${item.estado}` : `${item.codigo} - $${item.precio}`;
+                const card = document.createElement('div');
+                card.className = `item-card ${index === indexEditando ? 'active' : ''}`;
+                card.onclick = () => editarProyecto(index);
+                card.innerHTML = `<span class="item-type ${claseTipo}">${textoTipo}</span><h3>${item.titulo}</h3><p>${subtitulo}</p>`;
+                contenedor.appendChild(card);
+            });
+        }
+
+        function nuevoProyecto() {
+            indexEditando = -1;
+            document.getElementById('form-title').innerText = "Nuevo Proyecto";
+            document.getElementById('btn-delete').style.display = 'none';
+            document.getElementById('tipo').value = "problema";
+            document.getElementById('titulo').value = "";
+            document.getElementById('descripcion').value = "";
+            document.getElementById('progreso').value = "0";
+            document.getElementById('estado').value = "En investigación";
+            document.getElementById('color').value = "cyan";
+            document.getElementById('codigo').value = "";
+            document.getElementById('precio').value = "";
+            document.getElementById('link').value = "";
+            toggleCampos();
+            mostrarFormulario();
+            renderizarLista();
+        }
+
+        function editarProyecto(index) {
+            indexEditando = index;
+            const item = misDatos[index];
+            document.getElementById('form-title').innerText = "Editar Proyecto";
+            document.getElementById('btn-delete').style.display = 'block';
+            document.getElementById('tipo').value = item.tipo;
+            document.getElementById('titulo').value = item.titulo;
+            document.getElementById('descripcion').value = item.descripcion;
+            document.getElementById('link').value = item.link || "";
+            
+            if(item.tipo === 'problema') {
+                document.getElementById('progreso').value = item.progreso;
+                document.getElementById('estado').value = item.estado;
+                document.getElementById('color').value = item.color;
+            } else {
+                document.getElementById('codigo').value = item.codigo;
+                document.getElementById('precio').value = item.precio;
+            }
+            toggleCampos();
+            mostrarFormulario();
+            renderizarLista();
+        }
+
+        function mostrarFormulario() {
+            document.getElementById('empty-state').style.display = 'none';
+            document.getElementById('formulario').classList.add('active');
+        }
+
+        function toggleCampos() {
+            const tipo = document.getElementById('tipo').value;
+            document.getElementById('link').placeholder = tipo === 'problema' ? 'Ej: Problemas/problema-001.html' : 'Ej: producto.html?id=2';
+            if(tipo === 'problema') {
+                document.getElementById('campos-problema').style.display = 'grid';
+                document.getElementById('campo-progreso').style.display = 'block';
+                document.getElementById('campo-codigo').style.display = 'none';
+                document.getElementById('campo-precio').style.display = 'none';
+            } else {
+                document.getElementById('campos-problema').style.display = 'none';
+                document.getElementById('campo-progreso').style.display = 'none';
+                document.getElementById('campo-codigo').style.display = 'block';
+                document.getElementById('campo-precio').style.display = 'block';
+            }
+        }
+
+        function guardarProyecto() {
+            const tipo = document.getElementById('tipo').value;
+            const itemAnterior = indexEditando === -1 ? null : misDatos[indexEditando];
+            const idGenerado = itemAnterior ? itemAnterior.id : Date.now().toString();
+            const linkPorDefecto = tipo === 'problema' ? `Problemas/problema-${idGenerado}.html` : `producto.html?id=${idGenerado}`;
+            const linkIngresado = document.getElementById('link').value.trim();
+            
+            const item = {
+                id: idGenerado,
+                tipo: tipo,
+                titulo: document.getElementById('titulo').value || "Sin título",
+                descripcion: document.getElementById('descripcion').value,
+                link: linkIngresado || linkPorDefecto
+            };
+
+            if(tipo === 'problema') {
+                item.progreso = parseInt(document.getElementById('progreso').value) || 0;
+                item.estado = document.getElementById('estado').value;
+                item.color = document.getElementById('color').value;
+            } else {
+                item.codigo = document.getElementById('codigo').value || "SOL-000";
+                item.precio = document.getElementById('precio').value || "0";
+            }
+
+            if(indexEditando === -1) {
+                misDatos.push(item);
+                indexEditando = misDatos.length - 1;
+            } else {
+                misDatos[indexEditando] = item;
+            }
+            renderizarLista();
+            mostrarToast("Proyecto guardado con éxito");
+        }
+
+        function borrarProyecto() {
+            if(confirm("¿Estás seguro de que querés borrar este proyecto?")) {
+                misDatos.splice(indexEditando, 1);
+                indexEditando = -1;
+                document.getElementById('formulario').classList.remove('active');
+                document.getElementById('empty-state').style.display = 'flex';
+                renderizarLista();
+                mostrarToast("Proyecto eliminado", "var(--danger)");
+            }
+        }
+
+        function descargarData() {
+            const dataStr = "const IRD_DATA = " + JSON.stringify(misDatos, null, 4) + ";";
+            const blob = new Blob([dataStr], {type: "text/javascript"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data.js';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            mostrarToast("¡data.js descargado! Subilo a GitHub.");
+        }
+
+        function mostrarToast(mensaje, color = "var(--cyan)") {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.style.background = color;
+            if(color === "var(--danger)") toast.style.color = "white";
+            toast.innerText = mensaje;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        init();
+    </script>
+</body>
+</html>

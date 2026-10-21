@@ -1,0 +1,263 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% PAQUETES
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm,top=3cm,bottom=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{array}
+
+% ============================================================
+% COLORES IRD (NEGRO AMOLED, CELESTE #00FFFF, NARANJA #FF5F1F)
+% ============================================================
+\definecolor{irdblack}{HTML}{000000}      % negro AMOLED (TODO el texto)
+\definecolor{irdcyan}{HTML}{00FFFF}       % celeste puro (solo líneas/bordes)
+\definecolor{irdorange}{HTML}{FF5F1F}     % naranja puro (solo líneas/bordes)
+\definecolor{irdlight}{HTML}{E6FFFF}      % celeste muy claro (fondo de cajas)
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=irdblack,
+    urlcolor=irdblack,
+    pdftitle={IRD - Documento de Solucion},
+    pdfauthor={Sebastian Bergesio}
+}
+
+% ============================================================
+% ESTILO DE SECCIONES (texto negro, línea celeste)
+% ============================================================
+\titleformat{\section}
+    {\Large\bfseries\color{irdblack}}
+    {\thesection}{0.8em}{}
+    [\vspace{-0.4em}\textcolor{irdcyan}{\rule{\textwidth}{2pt}}]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{irdblack}}
+    {\thesubsection}{0.6em}{}
+
+\titlespacing*{\section}{0pt}{1.5em}{0.8em}
+\titlespacing*{\subsection}{0pt}{1em}{0.4em}
+
+% ============================================================
+% HEADER / FOOTER (todo negro)
+% ============================================================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\small\textcolor{irdblack}{IRD --- Ingeniería Rápida de Diseño}}
+\fancyhead[R]{\small\textcolor{irdblack}{\thepage}}
+\fancyfoot[C]{\footnotesize\textcolor{irdblack}{Sebastián Bergesio · Documento confidencial}}
+
+% ============================================================
+% CAJAS PERSONALIZADAS
+% ============================================================
+\newtcolorbox{infobox}[1][]{
+    colback=irdlight,
+    colframe=irdcyan,
+    boxrule=0pt,
+    leftrule=4pt,
+    arc=0pt,
+    fonttitle=\bfseries\color{irdblack},
+    coltitle=irdblack,
+    title=#1,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    toprule=0pt, bottomrule=0pt, rightrule=0pt
+}
+
+\newtcolorbox{alertbox}[1][]{
+    colback=white,
+    colframe=irdorange,
+    boxrule=1.2pt,
+    arc=2pt,
+    fonttitle=\bfseries\color{irdblack},
+    title=#1,
+    left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Comandos para campos
+\newcommand{\campo}[2]{\textbf{\textcolor{irdblack}{#1:}} \textcolor{irdblack}{#2}\par\vspace{0.3em}}
+
+% ============================================================
+% DOCUMENTO
+% ============================================================
+\begin{document}
+
+% ---------- PORTADA ----------
+\begin{titlepage}
+\centering
+
+% --- ESPACIO PARA LOGO ---
+% IMPORTANTE: Asegurate de tener el archivo Logo.png en la misma carpeta.
+% Si usás un .jpg, cambialo acá abajo.
+\vspace*{0.5cm}
+\includegraphics[width=5cm, height=5cm, keepaspectratio]{LogoNegro.png}
+
+\vspace{1.5cm}
+
+% Doble línea: celeste puro + naranja puro
+{\color{irdcyan}\rule{\textwidth}{3pt}}\\[0.15cm]
+{\color{irdorange}\rule{\textwidth}{1.5pt}}\\[0.5cm]
+
+{\fontsize{34}{40}\selectfont\bfseries\color{irdblack} DOCUMENTO\\[0.2cm] DE SOLUCIÓN}\\[0.5cm]
+
+{\color{irdcyan}\rule{\textwidth}{3pt}}\\[0.15cm]
+{\color{irdorange}\rule{\textwidth}{1.5pt}}\\[1.2cm]
+
+{\Large\color{irdblack}\textit{Ingeniería Rápida de Diseño}}\\[2cm]
+
+% --- DATOS DEL DOCUMENTO ---
+\begin{tcolorbox}[
+    width=0.85\textwidth,
+    colback=irdlight, colframe=irdcyan,
+    boxrule=0pt, leftrule=5pt, arc=0pt,
+    left=12pt, right=12pt, top=10pt, bottom=10pt
+]
+\large
+\campo{Código de solución}{SOL-001}
+\campo{Título de la solución}{Optimización de Procesos}
+\campo{Cliente}{PyME de ejemplo S.A.}
+\campo{Fecha}{2026-10-21}
+\campo{Versión}{1.0}
+\end{tcolorbox}
+
+\vfill
+
+{\large\bfseries\color{irdblack} Sebastián Bergesio}\\[0.3cm]
+{\color{irdblack} Fundador · IRD}\\[0.2cm]
+{\small\color{irdblack} sebabergesio472@gmail.com · ird.com.ar}
+
+\vspace{1cm}
+
+\end{titlepage}
+
+% ---------- ÍNDICE ----------
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Resumen ejecutivo}
+% ============================================================
+
+\begin{infobox}[Síntesis de la solución]
+\campo{Problema en 3 líneas}{La línea de producción pierde tiempo por cuellos de botella y retrabajo entre estaciones.}
+\campo{Solución en 3 líneas}{Rediseño del flujo y balanceo de estaciones con estándares de trabajo.}
+\campo{Beneficio esperado}{Reducción estimada del 20\% en tiempos de ciclo.}
+\campo{Recursos necesarios para implementar}{Dos semanas de relevamiento y un responsable de producción.}
+\end{infobox}
+
+% ============================================================
+\section{Problema detectado}
+% ============================================================
+
+\subsection{Descripción del problema}
+\campo{Descripción}{El proceso actual tiene esperas entre estaciones y retrabajo.}
+
+\subsection{Causa raíz}
+\campo{Causa raíz (no el síntoma)}{Falta de balanceo de líneas y de estándares de trabajo.}
+
+\subsection{Datos de respaldo}
+\campo{Fuentes verificables}{Registros de producción de los últimos tres meses.}
+
+\subsection{Consecuencias de no resolverlo}
+\campo{Consecuencias}{Mayor costo unitario y entregas demoradas.}
+
+% ============================================================
+\section{Alternativas evaluadas}
+% ============================================================
+
+\campo{Criterios de evaluación (costo, tiempo, complejidad, riesgo, normativa)}{Costo, tiempo, complejidad, riesgo y normativa aplicable.}
+
+\vspace{0.5cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}p{3cm}p{2.2cm}p{2.2cm}p{2.2cm}>{\raggedright\arraybackslash}p{4.4cm}@{}}
+\toprule
+\textbf{\color{irdblack}Alternativa} & \textbf{\color{irdblack}Costo} & \textbf{\color{irdblack}Tiempo} & \textbf{\color{irdblack}Riesgo} & \textbf{\color{irdblack}Motivo de descarte} \\
+\midrule
+Alternativa A & USD 10.000 & 8 semanas & Bajo & Requiere inversión inicial. \\
+\addlinespace
+Alternativa B & USD 6.000 & 12 semanas & Medio & Mayor tiempo de implementación. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section{Solución recomendada}
+% ============================================================
+
+\subsection{Descripción técnica}
+\campo{Descripción}{Se propone reorganizar el flujo, balancear las estaciones y definir estándares de trabajo para reducir esperas y retrabajo.}
+
+\subsection{Criterios de diseño y cálculo}
+\campo{Parámetros y normativas aplicables}{Balanceo de líneas, análisis de tiempos y definición de capacidad.}
+
+\subsection{Condiciones de implementación}
+\campo{Qué se necesita / qué se debe evitar}{No detener la producción durante el relevamiento y asegurar la disponibilidad del personal.}
+
+\subsection{Esquemas y diagramas}
+\campo{Insertar diagramas, tablas o esquemas si aplica}{No aplica.}
+
+% ============================================================
+\section{Resultado esperado}
+% ============================================================
+
+\campo{Beneficio medible (ahorro, reducción de tiempos, mejora de eficiencia)}{Reducción del 20\% en tiempos de ciclo.}
+\campo{Supuestos bajo los cuales se calculó}{Demanda estable y disponibilidad del personal.}
+
+% ============================================================
+\section{Qué NO incluye esta solución}
+% ============================================================
+
+\begin{alertbox}[Límites del entregable]
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt]
+    \item Prototipo físico.
+    \item Desarrollo de ingeniería de detalle.
+    \item Ejecución del proyecto.
+    \item Dirección de obra.
+    \item Garantía de resultados de ejecución (depende de quien lo implemente).
+\end{itemize}
+\end{alertbox}
+
+% ============================================================
+\section{Condiciones de uso y licencia}
+% ============================================================
+
+\campo{Tipo de licencia (uso, no venta)}{Licencia de uso.}
+\campo{Prohibición de reproducción y distribución}{No se permite la reventa del documento.}
+\campo{Vigencia de la solución (si aplica)}{12 meses.}
+
+% ============================================================
+\section{Anexos}
+% ============================================================
+
+\subsection{Fuentes consultadas}
+\campo{Fuentes}{Registros internos del cliente.}
+
+\subsection{Normativas citadas}
+\campo{Normativas}{No aplica.}
+
+\subsection{Glosario técnico}
+\campo{Glosario (si el cliente no es ingeniero)}{Tiempo de ciclo: tiempo total de una unidad.}
+
+\vfill
+
+\begin{center}
+{\color{irdorange}\rule{0.5\textwidth}{1pt}}\\[0.3cm]
+{\small\color{irdblack} Documento generado por IRD --- Ingeniería Rápida de Diseño}\\
+{\small\color{irdblack} Sebastián Bergesio · sebabergesio472@gmail.com}
+\end{center}
+
+\end{document}

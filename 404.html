@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada | IRD</title>
+    <link rel="icon" type="image/svg+xml" href="Recursos/Logo-Blanco.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error-container { text-align: center; padding: 100px 20px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .error-code { font-size: 10rem; font-weight: 900; color: transparent; -webkit-text-stroke: 4px var(--orange); margin: 0; line-height: 1; text-shadow: 0 0 30px rgba(255, 95, 31, 0.3); }
+        .error-title { font-size: 2.5rem; margin: 20px 0; color: var(--text-main); }
+        .error-text { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 40px; max-width: 500px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="container">
+        <div class="error-container reveal active">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">Ups. Esta página se perdió en el laboratorio.</h2>
+            <p class="error-text">La página que estás buscando no existe o fue movida a otra dirección. Pero no te preocupes, volvamos al inicio para seguir resolviendo problemas.</p>
+            <a href="index.html" class="btn btn-primary">Volver a la página principal</a>
+        </div>
+    </div>
+</body>
+</html>

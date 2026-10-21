@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones | IRD</title>
+    <link rel="icon" type="image/svg+xml" href="Recursos/Logo-Blanco.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="container nav-container">
+        <nav>
+            <a href="index.html" class="logo-nav">
+                <img src="Recursos/Logo-Blanco.svg" alt="IRD Logo" style="height: 65px; width: auto; filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));">
+            </a>
+            
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Volver al Inicio</a>
+            </div>
+        </nav>
+    </div>
+
+    <section class="container" style="padding-top: 80px; max-width: 800px; margin-bottom: 80px;">
+        <h1 class="section-title" style="text-align: left; font-size: 2.5rem;">Términos y Condiciones</h1>
+        
+        <div style="color: var(--text-muted); line-height: 1.8; margin-top: 30px;">
+            <h3 style="color: var(--cyan); margin: 20px 0 10px;">1. Objeto del servicio</h3>
+            <p>IRD (Ingeniería Rápida de Diseño), operado por <strong>Sebastián Alan Bergesio</strong>, entrega documentos técnicos de solución (diagnóstico, alternativas y recomendación). <strong>No incluye la ejecución, dirección de obra, ni prototipos físicos.</strong></p>
+
+            <h3 style="color: var(--cyan); margin: 20px 0 10px;">2. Propiedad Intelectual y Licencia de Uso</h3>
+            <p>El documento entregado es propiedad intelectual exclusiva de IRD. La compra otorga una <strong>licencia de uso único y personal</strong> para el cliente. Queda estrictamente prohibida la reproducción, distribución, publicación total o parcial, o reventa del documento a terceros sin autorización expresa.</p>
+
+            <h3 style="color: var(--cyan); margin: 20px 0 10px;">3. Política de reembolso</h3>
+            <p>Por tratarse de productos digitales (documentos PDF descargables), no se realizan reembolsos una vez enviado el material.</p>
+
+            <h3 style="color: var(--cyan); margin: 20px 0 10px;">4. Límite de responsabilidad y Exención</h3>
+            <p>IRD garantiza el rigor técnico del análisis y la documentación entregada. Sin embargo, <strong>no se hace responsable por los daños o perjuicios que pudieran derivarse de la implementación de la solución por parte del cliente o de terceros contratados</strong>. La ejecución del proyecto es responsabilidad exclusiva de quien la lleva a cabo.</p>
+            
+            <h3 style="color: var(--cyan); margin: 20px 0 10px;">5. Contacto</h3>
+            <p>Para cualquier consulta legal o comercial, puede comunicarse a: <a href="mailto:sebabergesio472@gmail.com" style="color: var(--cyan);">sebabergesio472@gmail.com</a>.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="color: var(--text-muted);">&copy; 2026 IRD - Sebastián Bergesio.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() { document.querySelector('.nav-links').classList.toggle('active'); }
+    </script>
+</body>
+</html>

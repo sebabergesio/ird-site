@@ -1,0 +1,9 @@
+_legacy/
+dist/
+__pycache__/
+*.aux
+*.log
+*.out
+*.toc
+src/docs/build/
+.superpowers/sdd/

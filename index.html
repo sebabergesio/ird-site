@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRD | Ingeniería Rápida de Diseño</title>
+    
+    <link rel="icon" type="image/svg+xml" href="Recursos/Logo-Blanco.svg">
+    <meta name="description" content="Resolvemos problemas técnicos de ingeniería y diseño. Documentos técnicos listos para implementar, sin invertir en I+D. Por Sebastián Bergesio.">
+    <meta name="keywords" content="ingeniería, resolución de problemas, diseño técnico, PyMEs, consultoría, biomasa">
+    <meta name="author" content="Sebastián Bergesio">
+    <meta property="og:title" content="IRD - Ingeniería Rápida de Diseño">
+    <meta property="og:description" content="Si tenés la idea pero no el conocimiento técnico, yo resuelvo el problema.">
+    <meta property="og:image" content="Recursos/Logo-Blanco.svg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <div class="container nav-container">
+        <nav>
+            <a href="index.html" class="logo-nav">
+                <img src="Recursos/Logo-Blanco.svg" alt="IRD Logo" style="height: 65px; width: auto; filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));">
+            </a>
+            
+            <!-- BOTÓN HAMBURGUESA -->
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+
+            <div class="nav-links">
+                <a href="soluciones.html">Catálogo</a>
+                <a href="#que-es">Qué es IRD</a>
+                <a href="#metodo">Cómo trabajamos</a>
+                <a href="#contacto" style="color: var(--orange); font-weight: 700;">Contacto</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 1. HERO -->
+    <div class="container">
+        <section class="hero" style="text-align:center; padding: 100px 0 80px; display:flex; flex-direction:column; justify-content:center;">
+            <h1 class="reveal" style="font-size: 3.8rem; font-weight: 900; line-height: 1.1; margin-bottom:20px;">Si tenés la idea pero no el conocimiento técnico, <span style="color: var(--cyan); text-shadow: 0 0 15px rgba(0,255,255,0.5);">yo resuelvo el problema.</span></h1>
+            <p class="reveal" style="font-size: 1.3rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px;">Analizo tu proyecto, lo resuelvo con datos verificables y te entrego la solución documentada. Sin prototipos, sin ejecución.</p>
+            <div class="reveal">
+                <a href="#que-es" class="btn btn-primary">Conocer el modelo</a>
+                <a href="#soluciones-destacadas" class="btn btn-secondary">Ver soluciones disponibles</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- 2. ¿QUÉ ES IRD? -->
+    <section id="que-es" style="background: rgba(8,8,8,0.8); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title reveal">¿Qué es <span>Ingeniería Rápida de Diseño</span>?</h2>
+            <div class="grid-2">
+                <div class="card reveal" style="border-left: 4px solid var(--cyan);">
+                    <h3>No somos una consultora tradicional</h3>
+                    <p>Las consultoras tradicionales te cobran por horas de reunión y te entregan un diagnóstico. En IRD nos enfocamos en la <strong>resolución técnica</strong>: tomamos un problema complejo, lo analizamos a fondo, evaluamos alternativas con datos y normativas, y te entregamos el plano de la solución.</p>
+                </div>
+                <div class="card reveal" style="border-left: 4px solid var(--orange);">
+                    <h3>No somos una constructora</h3>
+                    <p>No ejecutamos la obra, no dirigimos personal ni hacemos prototipos físicos. Tu equipo (o un tercero que contrates) se encarga de eso. Nosotros te damos la certeza técnica y el documento de ingeniería para que no pierdas tiempo ni dinero probando a ciegas.</p>
+                </div>
+            </div>
+            
+            <div class="reveal" style="margin-top: 40px; background: #111; border: 1px solid #333; border-radius: 12px; padding: 30px;">
+                <h3 style="text-align: center; color: var(--text-main); margin-bottom: 20px; font-size: 1.5rem;">Qué hacemos y qué no hacemos</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;">
+                    <ul style="list-style: none; color: var(--text-muted); line-height: 1.8;">
+                        <li><span style="color: var(--cyan); margin-right: 10px;">✓</span> Análisis de causa raíz</li>
+                        <li><span style="color: var(--cyan); margin-right: 10px;">✓</span> Evaluación de normativas</li>
+                        <li><span style="color: var(--cyan); margin-right: 10px;">✓</span> Documento de solución técnica</li>
+                    </ul>
+                    <ul style="list-style: none; color: var(--text-muted); line-height: 1.8;">
+                        <li><span style="color: var(--orange); margin-right: 10px;">✗</span> No hacemos prototipos físicos</li>
+                        <li><span style="color: var(--orange); margin-right: 10px;">✗</span> No ejecutamos el proyecto</li>
+                        <li><span style="color: var(--orange); margin-right: 10px;">✗</span> No dirigimos obra</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. CÓMO TRABAJAMOS -->
+    <section id="metodo" style="padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title reveal">¿Cómo <span>trabajamos</span>?</h2>
+            <p class="reveal" style="text-align: center; color: var(--text-muted); max-width: 700px; margin: 0 auto 50px;">IRD opera de dos formas distintas para generar soluciones: a demanda de un cliente, o de forma proactiva desde nuestro propio laboratorio de investigación.</p>
+            
+            <div class="grid-2">
+                <!-- VÍA A -->
+                <div class="card reveal" style="border-left: 4px solid var(--cyan); padding: 40px;">
+                    <h3 style="color: var(--cyan); font-size: 1.4rem; margin-bottom: 10px; line-height: 1.2;">Vía A: A Demanda (Tu Problema)</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem;">Cuando un cliente nos trae una idea o un cuello de botella específico de su empresa.</p>
+                    
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted); line-height: 1.6;">
+                        <li style="margin-bottom: 15px;"><strong style="color: var(--text-main);">1. Definimos el problema:</strong> Establecemos los límites del proyecto juntos.</li>
+                        <li style="margin-bottom: 15px;"><strong style="color: var(--text-main);">2. Investigación:</strong> Evaluamos alternativas y normativas aplicables.</li>
+                        <li><strong style="color: var(--text-main);">3. Entrega:</strong> Te damos un documento técnico exclusivo y confidencial para que lo ejecutes.</li>
+                    </ul>
+                </div>
+
+                <!-- VÍA B -->
+                <div class="card reveal" style="border-left: 4px solid var(--orange); padding: 40px;">
+                    <h3 style="color: var(--orange); font-size: 1.4rem; margin-bottom: 10px; line-height: 1.2;">Vía B: Proactiva (Nuestro Lab)</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem;">Cuando nosotros detectamos un problema en la industria o la sociedad y lo resolvemos por nuestra cuenta.</p>
+                    
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted); line-height: 1.6;">
+                        <li style="margin-bottom: 15px;"><strong style="color: var(--text-main);">1. Detección:</strong> Identificamos una problemática real.</li>
+                        <li style="margin-bottom: 15px;"><strong style="color: var(--text-main);">2. Desarrollo:</strong> Lo investigamos y diseñamos la solución sin que nadie nos lo pida.</li>
+                        <li><strong style="color: var(--text-main);">3. Catálogo:</strong> Publicamos la solución lista para que cualquier empresa la compre y la implemente.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SOLUCIONES DESTACADAS -->
+    <section id="soluciones-destacadas" style="background: rgba(8,8,8,0.8); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title reveal">Soluciones <span>Destacadas</span></h2>
+            <div class="grid-2" id="contenedor-destacadas"></div>
+            <div style="text-align: center; margin-top: 40px;" class="reveal">
+                <a href="soluciones.html" class="btn btn-secondary">Ver todo el catálogo completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SOBRE MÍ -->
+    <section id="sobre-mi" style="padding: 80px 0;">
+        <div class="container">
+            <div class="card reveal" style="border-left: 4px solid var(--cyan); padding: 40px;">
+                <h3 style="font-size: 2rem; margin-bottom: 5px;">Sebastián Bergesio</h3>
+                <h4 style="color: var(--orange); margin-bottom: 20px; font-weight: 400;">Fundador de IRD</h4>
+                <p style="font-size: 1.1rem; line-height: 1.8;">Mi trabajo es quitarte la incertidumbre técnica. Tomo proyectos que están en la etapa de "idea" o problemas sin resolver, los analizo con rigor y te entrego un plan de solución claro y aplicable. No vendo humo ni promesas: entrego ingeniería documentada.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CONTACTO -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="reveal">
+                <h2>¿Arrancamos con tu proyecto?</h2>
+                <p style="color: var(--text-muted); margin: 15px 0;">Escribime y contame qué tenés en mente.</p>
+                <a href="mailto:sebabergesio472@gmail.com" style="font-size: 1.8rem; color: var(--cyan); text-decoration: none; font-weight: bold; transition: color 0.3s;" onmouseover="this.style.color='#FF5F1F'" onmouseout="this.style.color='#00FFFF'">sebabergesio472@gmail.com</a>
+            </div>
+            <div class="legales" style="margin-top: 40px;">
+                <p>&copy; 2026 IRD - Ingeniería Rápida de Diseño. | <a href="terminos.html" style="color:var(--text-muted); text-decoration: underline;">Términos y Condiciones</a></p>
+                <p style="margin-top: 10px; font-size: 0.75rem;">Las soluciones entregadas son de uso exclusivo del cliente. Prohibida su reproducción o reventa.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+        // Lógica del Menú Móvil
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contenedor = document.getElementById('contenedor-destacadas');
+            const soluciones = IRD_DATA.filter(item => item.tipo === 'solucion').slice(0, 2);
+
+            if(soluciones.length === 0) {
+                contenedor.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center;">Próximamente nuevas soluciones documentadas.</p>';
+            } else {
+                soluciones.forEach(sol => {
+                    contenedor.innerHTML += `
+                        <div class="card reveal active">
+                            <div>
+                                <span style="color: var(--orange); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px;">${sol.codigo}</span>
+                                <h3>${sol.titulo}</h3>
+                                <p style="margin-bottom: 15px; color: var(--text-muted);">${sol.descripcion}</p>
+                            </div>
+                            <a href="${sol.link}" class="btn btn-primary" style="margin-left: 0;">Ver Detalles</a>
+                        </div>
+                    `;
+                });
+            }
+
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                reveals.forEach((reveal) => {
+                    if (reveal.getBoundingClientRect().top < windowHeight - 100) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); 
+        });
+    </script>
+</body>
+</html>
