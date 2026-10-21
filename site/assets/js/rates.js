@@ -7,7 +7,8 @@
   var ENDPOINT = 'https://dolarapi.com/v1/dolares/bolsa';
   var MARKUP = 1.05;                 /* Recargo por cobro en pesos. */
   var CACHE_KEY = 'ird.mep.v1';
-  var CACHE_TTL = 10 * 60 * 1000;    /* 10 minutos. */
+  var CACHE_TTL = 10 * 60 * 1000;      /* 10 minutos. */
+  var STALE_MAX = 72 * 60 * 60 * 1000; /* tope para mostrar la última cotización guardada. */
   var TIMEOUT = 8000;
 
   var doc = document;
@@ -65,7 +66,8 @@
     try {
       return when.toLocaleString(locale, {
         day: '2-digit', month: '2-digit', year: 'numeric',
-        hour: '2-digit', minute: '2-digit', hour12: false
+        hour: '2-digit', minute: '2-digit', hour12: false,
+        timeZone: 'America/Argentina/Buenos_Aires'
       });
     } catch (err) {
       return when.toISOString().slice(0, 16).replace('T', ' ');
@@ -141,11 +143,13 @@
   }
 
   var cached = readCache();
-  if (cached && Date.now() - cached.ts < CACHE_TTL) {
+  var age = cached ? Date.now() - cached.ts : Infinity;
+  if (cached && age < CACHE_TTL) {
     apply(cached.rate, cached.iso, false);
     return;
   }
-  if (cached) {
+  var canShowStale = cached && age < STALE_MAX;
+  if (canShowStale) {
     apply(cached.rate, cached.iso, true);
   }
 
@@ -155,6 +159,6 @@
       apply(data.rate, data.iso, false);
     })
     .catch(function () {
-      if (!cached) renderError();
+      if (!canShowStale) renderError();
     });
 })();
