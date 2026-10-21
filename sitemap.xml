@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://ird.example/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/"/>
+  </url>
+  <url>
+    <loc>https://ird.example/documento.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/documento.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/document.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/documento.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/laboratorio.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/laboratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/lab.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/laboratorio.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/sobre-mi.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/sobre-mi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/sobre-mi.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/contacto.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/contacto.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/terminos.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/terminos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/terminos.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/en/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/"/>
+  </url>
+  <url>
+    <loc>https://ird.example/en/document.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/documento.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/document.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/documento.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/en/lab.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/laboratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/lab.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/laboratorio.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/en/about.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/sobre-mi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/sobre-mi.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/en/contact.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/contacto.html"/>
+  </url>
+  <url>
+    <loc>https://ird.example/en/terms.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://ird.example/terminos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ird.example/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ird.example/terminos.html"/>
+  </url>
+</urlset>
