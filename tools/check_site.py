@@ -63,6 +63,32 @@ PRICE_PAGES = {
     "en/document.html",
     "en/contact.html",
 }
+HOME_STRUCTURE = {
+    "index.html": {
+        "sections": [
+            "que-es-ird", "problema", "metodo", "ejemplo",
+            "que-recibe", "precios", "limites", "preguntas",
+        ],
+        "pricing_id": "precios",
+        "once": ["no firma", "no ejecuta"],
+    },
+    "en/index.html": {
+        "sections": [
+            "about-ird", "problem", "method", "example",
+            "what-you-get", "pricing", "limits", "faq",
+        ],
+        "pricing_id": "pricing",
+        "once": ["does not sign", "does not execute"],
+    },
+}
+# Precios de servicio: no deben aparecer antes de la sección de precios.
+# Quedan afuera los importes ilustrativos de la hoja del hero (USD 6.000/10.000).
+SERVICE_PRICE_MARKERS = [
+    "data-usd=", "data-price-ars",
+    "USD 80", "USD 450", "USD 1.200", "USD 1.400",
+    "USD 3.000", "USD 300",
+    "Desde USD", "desde USD", "From USD", "from USD",
+]
 SKIP_SCHEMES = ("http://", "https://", "mailto:", "tel:", "javascript:", "data:")
 
 
@@ -265,6 +291,50 @@ def check_page(path: Path, root: Path) -> list[str]:
     return [f"{rel}: {e}" for e in errors]
 
 
+def check_home_structure(root: Path) -> list[str]:
+    errors: list[str] = []
+    for rel, spec in HOME_STRUCTURE.items():
+        path = root / rel
+        if not path.exists():
+            errors.append(f"{rel}: falta")
+            continue
+        raw = path.read_text(encoding="utf-8", errors="replace")
+        lower = raw.lower()
+
+        positions: list[tuple[str, int]] = []
+        for sid in spec["sections"]:
+            idx = raw.find(f'id="{sid}"')
+            if idx < 0:
+                errors.append(f"{rel}: falta la sección #{sid}")
+            else:
+                positions.append((sid, idx))
+        for (prev, prev_idx), (cur, cur_idx) in zip(positions, positions[1:]):
+            if prev_idx >= cur_idx:
+                errors.append(f"{rel}: #{prev} debe ir antes que #{cur}")
+
+        pricing_idx = raw.find(f'id="{spec["pricing_id"]}"')
+        if pricing_idx < 0:
+            errors.append(f"{rel}: falta la sección de precios #{spec['pricing_id']}")
+        else:
+            main_idx = raw.find("<main")
+            prefix = raw[main_idx:pricing_idx] if main_idx >= 0 else raw[:pricing_idx]
+            prefix_lower = prefix.lower()
+            for marker in SERVICE_PRICE_MARKERS:
+                if marker.lower() in prefix_lower:
+                    errors.append(
+                        f"{rel}: precio de servicio antes de "
+                        f"#{spec['pricing_id']}: {marker!r}"
+                    )
+
+        for phrase in spec["once"]:
+            total = lower.count(phrase.lower())
+            if total != 1:
+                errors.append(
+                    f"{rel}: {phrase!r} aparece {total} vez/veces (se espera 1)"
+                )
+    return errors
+
+
 def public_html_files(root: Path) -> list[Path]:
     files = []
     for p in sorted(root.rglob("*.html")):
@@ -349,6 +419,7 @@ def main() -> int:
     errors: list[str] = []
     for path in public_html_files(root):
         errors.extend(check_page(path, root))
+    errors.extend(check_home_structure(root))
     errors.extend(check_links(root))
     errors.extend(check_parity(root, args.allow_missing))
     errors.extend(check_pdfs(root))

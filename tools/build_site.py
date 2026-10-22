@@ -127,8 +127,8 @@ class Page:
 PAGES = [
     Page(
         "home", "es", "index.html",
-        "IRD — Documento técnico de solución | Sebastián Bergesio",
-        "Analizo el problema, comparo alternativas y entrego un documento técnico de solución en PDF. Desde USD 1.200. Precios en USD y ARS al MEP del día.",
+        "IRD — Estudio de documentación técnica | Sebastián Bergesio",
+        "Estudio de documentación técnica: analizamos tu idea o problema, presentamos otras soluciones posibles y concluimos si es técnicamente viable, con supuestos y límites.",
         "home", "assets/img/og-ird-es.png", "page-home",
     ),
     Page(
@@ -163,8 +163,8 @@ PAGES = [
     ),
     Page(
         "home", "en", "en/index.html",
-        "IRD — Technical solution document | Sebastián Bergesio",
-        "I analyze the problem, compare alternatives and deliver a technical solution document as a PDF. From USD 1,200. Prices in USD and ARS at the day's MEP rate.",
+        "IRD — Technical documentation studio | Sebastián Bergesio",
+        "Technical documentation studio: we analyze your idea or problem, present other possible solutions and conclude whether it is technically viable, with assumptions and limits.",
         "home", "assets/img/og-ird-en.png", "page-home",
     ),
     Page(
