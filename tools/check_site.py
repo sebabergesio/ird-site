@@ -291,6 +291,29 @@ def check_page(path: Path, root: Path) -> list[str]:
     return [f"{rel}: {e}" for e in errors]
 
 
+def check_css_typography(root: Path) -> list[str]:
+    css_path = root / "assets" / "css" / "style.css"
+    if not css_path.exists():
+        return [f"falta {css_path}"]
+    raw = css_path.read_text(encoding="utf-8", errors="replace")
+    errors: list[str] = []
+    for match in re.finditer(r"font-size\s*:\s*([^;]+);", raw):
+        decl = " ".join(match.group(1).split())
+        px_values = [float(v) for v in re.findall(r"(\d+(?:\.\d+)?)px", decl)]
+        if re.search(r"\d+(?:\.\d+)?r?em\b", decl):
+            errors.append(f"style.css: font-size relativo: {decl}")
+        if px_values and min(px_values) < 14:
+            errors.append(f"style.css: font-size < 14px: {decl}")
+    body = re.search(r"(^|\n)body\s*\{([^}]*)\}", raw)
+    if body:
+        lh = re.search(r"line-height\s*:\s*([\d.]+)", body.group(2))
+        if not lh or float(lh.group(1)) < 1.6:
+            errors.append("style.css: body line-height < 1.6")
+    else:
+        errors.append("style.css: no se encontró el bloque body")
+    return errors
+
+
 def check_home_structure(root: Path) -> list[str]:
     errors: list[str] = []
     for rel, spec in HOME_STRUCTURE.items():
@@ -456,6 +479,7 @@ def main() -> int:
         errors.extend(check_page(path, root))
     errors.extend(check_home_structure(root))
     errors.extend(check_nav(root))
+    errors.extend(check_css_typography(root))
     errors.extend(check_links(root))
     errors.extend(check_parity(root, args.allow_missing))
     errors.extend(check_pdfs(root))
