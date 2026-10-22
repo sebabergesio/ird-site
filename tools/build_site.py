@@ -49,28 +49,31 @@ PATHS = {
 
 NAV = {
     "es": [
-        ("documento", "El documento"),
-        ("laboratorio", "Laboratorio"),
-        ("sobre-mi", "Sobre mí"),
-        ("contacto", "Contacto"),
+        ("home", "Inicio", ""),
+        ("home", "Qué es IRD", "que-es-ird"),
+        ("home", "Método", "metodo"),
+        ("home", "Ejemplo", "ejemplo"),
+        ("home", "Alcance y precios", "precios"),
+        ("contacto", "Contacto", ""),
     ],
     "en": [
-        ("documento", "The document"),
-        ("laboratorio", "Lab"),
-        ("sobre-mi", "About"),
-        ("contacto", "Contact"),
+        ("home", "Home", ""),
+        ("home", "About IRD", "about-ird"),
+        ("home", "Method", "method"),
+        ("home", "Example", "example"),
+        ("home", "Scope & pricing", "pricing"),
+        ("contacto", "Contact", ""),
     ],
 }
 
 COPY = {
     "es": {
         "brand_tag": "Ingeniería Rápida de Diseño",
-        "cta": "Contame tu problema",
         "nav_label": "Principal",
         "menu_label": "Abrir menú",
         "skip": "Saltar al contenido",
         "home_aria": "IRD — Ingeniería Rápida de Diseño — Inicio",
-        "footer_tagline": "Documentos técnicos de solución para problemas industriales y de proceso.",
+        "footer_tagline": "Estudio de documentación técnica para decisiones industriales y de proceso.",
         "location": "Avellaneda, Santa Fe, Argentina",
         "remote": "Trabajo remoto en todo el país y el exterior.",
         "nav_title": "Navegación",
@@ -87,12 +90,11 @@ COPY = {
     },
     "en": {
         "brand_tag": "Rapid Design Engineering",
-        "cta": "Tell me what's not working",
         "nav_label": "Main",
         "menu_label": "Open menu",
         "skip": "Skip to content",
         "home_aria": "IRD — Rapid Design Engineering — Home",
-        "footer_tagline": "Technical solution documents for industrial and process problems.",
+        "footer_tagline": "Technical documentation studio for industrial and process decisions.",
         "location": "Avellaneda, Santa Fe, Argentina",
         "remote": "Remote work across Argentina and worldwide.",
         "nav_title": "Navigation",
@@ -226,11 +228,16 @@ def public_url(out: str) -> str:
     return SITE_URL + "/" + out
 
 
+def nav_href(page: Page, key: str, anchor: str) -> str:
+    target = href(page, PATHS[page.lang][key])
+    return f"{target}#{anchor}" if anchor else target
+
+
 def nav_links(page: Page) -> str:
     items = []
-    for key, label in NAV[page.lang]:
-        target = href(page, PATHS[page.lang][key])
-        active = ' class="active" aria-current="page"' if page.nav == key else ""
+    for key, label, anchor in NAV[page.lang]:
+        target = nav_href(page, key, anchor)
+        active = ' class="active" aria-current="page"' if page.nav == key and not anchor else ""
         items.append(f'<a href="{target}"{active}>{label}</a>')
     return "\n          ".join(items)
 
@@ -238,7 +245,6 @@ def nav_links(page: Page) -> str:
 def render_header(page: Page) -> str:
     c = COPY[page.lang]
     home = href(page, PATHS[page.lang]["home"])
-    contact = href(page, PATHS[page.lang]["contacto"])
     other = "en" if page.lang == "es" else "es"
     switch_key = page.key if page.key in PATHS[other] else "home"
     switch_href = href(page, PATHS[other][switch_key])
@@ -255,7 +261,6 @@ def render_header(page: Page) -> str:
     </nav>
     <div class="header-actions">
       <a class="lang-switch" href="{switch_href}" hreflang="{other}" lang="{other}">{c['switch_label']}</a>
-      <a class="btn btn-solid btn-sm" href="{contact}">{c['cta']}</a>
     </div>
     <details class="menu">
       <summary aria-label="{c['menu_label']}"><span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span></summary>
@@ -263,7 +268,6 @@ def render_header(page: Page) -> str:
         <nav class="menu-nav" aria-label="{c['nav_label']}">
           {links}
         </nav>
-        <a class="btn btn-solid" href="{contact}">{c['cta']}</a>
         <a class="lang-switch lang-switch-mobile" href="{switch_href}" hreflang="{other}" lang="{other}">{c['switch_full']}</a>
       </div>
     </details>
@@ -281,8 +285,8 @@ def render_footer(page: Page) -> str:
     switch_href = href(page, PATHS[other][switch_key])
     logo = asset_prefix(page) + "assets/img/logo-blanco.svg"
     nav_items = "\n        ".join(
-        f'<a href="{href(page, PATHS[page.lang][key])}">{label}</a>'
-        for key, label in NAV[page.lang]
+        f'<a href="{nav_href(page, key, anchor)}">{label}</a>'
+        for key, label, anchor in NAV[page.lang]
     )
     return f'''<footer class="site-footer">
   <div class="wrap footer-grid">

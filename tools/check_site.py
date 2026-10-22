@@ -335,6 +335,41 @@ def check_home_structure(root: Path) -> list[str]:
     return errors
 
 
+NAV_EXPECTED = {
+    "index.html": [
+        "Inicio", "Qué es IRD", "Método", "Ejemplo",
+        "Alcance y precios", "Contacto",
+    ],
+    "en/index.html": [
+        "Home", "About IRD", "Method", "Example",
+        "Scope & pricing", "Contact",
+    ],
+}
+
+
+def check_nav(root: Path) -> list[str]:
+    errors: list[str] = []
+    for rel, expected in NAV_EXPECTED.items():
+        path = root / rel
+        if not path.exists():
+            errors.append(f"{rel}: falta")
+            continue
+        raw = path.read_text(encoding="utf-8", errors="replace")
+        block = re.search(r'<nav class="nav-desktop"[^>]*>(.*?)</nav>', raw, re.S)
+        if not block:
+            errors.append(f"{rel}: falta nav.nav-desktop")
+            continue
+        labels = [
+            re.sub(r"\s+", " ", label).strip()
+            for label in re.findall(r">([^<>]+)</a>", block.group(1))
+        ]
+        if labels != expected:
+            errors.append(
+                f"{rel}: nav {labels!r} (se esperaba {expected!r})"
+            )
+    return errors
+
+
 def public_html_files(root: Path) -> list[Path]:
     files = []
     for p in sorted(root.rglob("*.html")):
@@ -420,6 +455,7 @@ def main() -> int:
     for path in public_html_files(root):
         errors.extend(check_page(path, root))
     errors.extend(check_home_structure(root))
+    errors.extend(check_nav(root))
     errors.extend(check_links(root))
     errors.extend(check_parity(root, args.allow_missing))
     errors.extend(check_pdfs(root))
