@@ -223,3 +223,78 @@
     window.location.href = mailto;
   });
 })();
+
+/* ------------------------------------------------------------
+   Movimiento (2026-10-28)
+   Barra de progreso, header elevado, escalonado del reveal y
+   reglas que se trazan. Todo opcional: sin JS el sitio es estático.
+   ------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  var doc = document;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  /* Barra de progreso de lectura. */
+  var bar = doc.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  doc.body.appendChild(bar);
+
+  var header = doc.querySelector('.site-header');
+  var queued = false;
+
+  function paint() {
+    var y = window.pageYOffset || doc.documentElement.scrollTop || 0;
+    var max = doc.documentElement.scrollHeight - window.innerHeight;
+    var ratio = max > 0 ? Math.min(y / max, 1) : 0;
+    bar.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
+    if (header) {
+      header.classList.toggle('is-scrolled', y > 8);
+    }
+    queued = false;
+  }
+
+  function onScroll() {
+    if (!queued) {
+      queued = true;
+      window.requestAnimationFrame(paint);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  paint();
+
+  /* Escalonado: cada reveal toma un índice según sus hermanos visibles. */
+  if (!reduce) {
+    doc.querySelectorAll('.reveal').forEach(function (el) {
+      var parent = el.parentElement;
+      if (!parent) return;
+      var group = Array.prototype.filter.call(parent.children, function (c) {
+        return c.classList && c.classList.contains('reveal');
+      });
+      var index = group.indexOf(el);
+      if (index > 0) el.style.setProperty('--i', String(Math.min(index, 5)));
+    });
+  }
+
+  /* Reglas que se trazan al entrar en pantalla. */
+  var draws = doc.querySelectorAll('.steps, .timeline, .process, .cards');
+  if (draws.length) {
+    if (!hasIO || reduce) {
+      draws.forEach(function (el) { el.classList.add('is-drawn'); });
+    } else {
+      var dio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-drawn');
+            dio.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+      draws.forEach(function (el) { dio.observe(el); });
+    }
+  }
+})();

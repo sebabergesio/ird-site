@@ -29,9 +29,7 @@
 <meta name="twitter:description" content="Estudio de documentación técnica: analizamos tu idea o problema, presentamos otras soluciones posibles y concluimos si es técnicamente viable, con supuestos y límites.">
 <meta name="twitter:image" content="https://sebabergesio.github.io/ird-site/assets/img/og-ird-es.png">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="page-home">
@@ -183,15 +181,24 @@
     </div>
     <div class="doc-pages reveal">
       <figure class="page-thumb">
-        <img src="assets/img/muestra-p1.jpg" alt="Portada del documento de muestra SOL-001, con el título Optimización de procesos." loading="lazy" width="993" height="1404">
+        <picture>
+          <source type="image/webp" srcset="assets/img/muestra-p1.webp">
+          <img src="assets/img/muestra-p1.jpg" alt="Portada del documento de muestra SOL-001, con el título Optimización de procesos." loading="lazy" width="500" height="707" decoding="async">
+        </picture>
         <span class="thumb-label">01 · Portada</span>
       </figure>
       <figure class="page-thumb">
-        <img src="assets/img/muestra-p2.jpg" alt="Página de resumen ejecutivo y alternativas evaluadas del documento de muestra." loading="lazy" width="993" height="1404">
+        <picture>
+          <source type="image/webp" srcset="assets/img/muestra-p2.webp">
+          <img src="assets/img/muestra-p2.jpg" alt="Página de resumen ejecutivo y alternativas evaluadas del documento de muestra." loading="lazy" width="500" height="707" decoding="async">
+        </picture>
         <span class="thumb-label">02 · Resumen y alternativas</span>
       </figure>
       <figure class="page-thumb">
-        <img src="assets/img/muestra-p3.jpg" alt="Página de solución recomendada, resultado esperado y límites del documento de muestra." loading="lazy" width="993" height="1404">
+        <picture>
+          <source type="image/webp" srcset="assets/img/muestra-p3.webp">
+          <img src="assets/img/muestra-p3.jpg" alt="Página de solución recomendada, resultado esperado y límites del documento de muestra." loading="lazy" width="500" height="707" decoding="async">
+        </picture>
         <span class="thumb-label">03 · Solución y límites</span>
       </figure>
     </div>

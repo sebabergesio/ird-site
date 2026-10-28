@@ -2774,3 +2774,360 @@ main li,
     min-height: 44px;
   }
 }
+
+/* ============================================================
+   v3 · 2026-10-28 · Rendimiento y movimiento
+   - Fuentes servidas localmente: se eliminan los pedidos a Google Fonts.
+   - Entradas y micro-interacciones coherentes con el plano técnico.
+   - Sin JS o con prefers-reduced-motion todo queda estático y legible.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-latin-500.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-latin-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-soft: cubic-bezier(.4, 0, .2, 1);
+  --stagger: 70ms;
+}
+
+/* El encabezado pegajoso ya no tapa el destino de los enlaces internos. */
+html {
+  scroll-padding-top: calc(var(--header-h) + 18px);
+}
+
+/* ---------- Entradas ---------- */
+
+@keyframes ird-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes ird-sheet-in {
+  from { opacity: 0; transform: translateY(26px) rotate(-1.4deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes ird-stamp {
+  0%   { opacity: 0; transform: rotate(-6deg) scale(1.55); }
+  60%  { opacity: 1; transform: rotate(-7.5deg) scale(.95); }
+  100% { opacity: 1; transform: rotate(-6deg) scale(1); }
+}
+
+@keyframes ird-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Home: la columna de texto entra escalonada y la hoja se asienta. */
+.js .hero-copy.is-visible > * {
+  animation: ird-rise .75s var(--ease) both;
+}
+
+.js .hero-copy.is-visible > *:nth-child(1) { animation-delay: .04s; }
+.js .hero-copy.is-visible > *:nth-child(2) { animation-delay: .11s; }
+.js .hero-copy.is-visible > *:nth-child(3) { animation-delay: .18s; }
+.js .hero-copy.is-visible > *:nth-child(4) { animation-delay: .25s; }
+.js .hero-copy.is-visible > *:nth-child(5) { animation-delay: .32s; }
+.js .hero-copy.is-visible > *:nth-child(6) { animation-delay: .39s; }
+
+.js .sheet-wrap.is-visible {
+  animation: ird-sheet-in .9s var(--ease) .12s both;
+}
+
+.js .sheet-wrap.is-visible .stamp {
+  animation: ird-stamp .7s var(--ease) .95s both;
+}
+
+/* Páginas internas: encabezado y ficha técnica. */
+.js .page-hero-grid > * {
+  animation: ird-rise .75s var(--ease) both;
+}
+
+.js .page-hero-grid > *:nth-child(2) { animation-delay: .13s; }
+.js .page-hero-meta > div { animation: ird-rise .6s var(--ease) both; }
+.js .page-hero-meta > div:nth-child(1) { animation-delay: .22s; }
+.js .page-hero-meta > div:nth-child(2) { animation-delay: .29s; }
+.js .page-hero-meta > div:nth-child(3) { animation-delay: .36s; }
+.js .page-hero-meta > div:nth-child(4) { animation-delay: .43s; }
+
+/* ---------- Reveal al hacer scroll ---------- */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity .8s var(--ease),
+    transform .8s var(--ease);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* La regla corta de los números de sección se dibuja. */
+.js .reveal .section-num::before {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .7s var(--ease) .18s;
+}
+
+.js .reveal.is-visible .section-num::before {
+  transform: none;
+}
+
+/* La línea del pie de la hoja se traza al entrar. */
+.js .sheet-wrap::before {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.js .sheet-wrap.is-visible::before {
+  transform: none;
+  transition: transform .9s var(--ease) .34s;
+}
+
+/* Muestras del documento: aparecen una tras otra. */
+.js .reveal.is-visible .page-thumb {
+  animation: ird-fade .9s var(--ease) both;
+}
+
+.js .reveal.is-visible .page-thumb:nth-child(2) { animation-delay: .14s; }
+.js .reveal.is-visible .page-thumb:nth-child(3) { animation-delay: .28s; }
+
+/* ---------- Reglas que se trazan ---------- */
+
+.js .steps,
+.js .timeline,
+.js .process,
+.js .cards {
+  position: relative;
+}
+
+.js .steps,
+.js .timeline,
+.js .process,
+.js .cards {
+  border-top-color: transparent;
+}
+
+.js .steps::before,
+.js .timeline::before,
+.js .process::before,
+.js .cards::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.1s var(--ease);
+  pointer-events: none;
+}
+
+.js .steps.is-drawn::before,
+.js .timeline.is-drawn::before,
+.js .process.is-drawn::before,
+.js .cards.is-drawn::before {
+  transform: none;
+}
+
+/* ---------- Barra de progreso de lectura ---------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 90;
+  background: linear-gradient(90deg, var(--teal), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+/* ---------- Header al scrollear ---------- */
+
+.site-header {
+  transition: box-shadow .35s var(--ease), background-color .35s var(--ease);
+}
+
+.site-header.is-scrolled {
+  background: rgba(241, 240, 234, .97);
+  box-shadow: 0 14px 30px -22px rgba(26, 26, 26, .75);
+}
+
+/* ---------- Navegación ---------- */
+
+.nav-desktop a::after {
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .38s var(--ease);
+}
+
+.nav-desktop a:hover::after,
+.nav-desktop a.active::after {
+  width: 100%;
+  transform: scaleX(1);
+}
+
+/* ---------- Botones ---------- */
+
+.btn {
+  transition:
+    background .2s var(--ease-soft),
+    color .2s var(--ease-soft),
+    border-color .2s var(--ease-soft),
+    transform .25s var(--ease),
+    box-shadow .25s var(--ease);
+}
+
+.btn-solid:hover {
+  box-shadow: 0 8px 22px -8px rgba(194, 65, 12, .55);
+}
+
+.btn-ghost:hover {
+  box-shadow: 5px 5px 0 rgba(26, 26, 26, .16);
+}
+
+.btn-text span,
+.section-link span {
+  transition: transform .28s var(--ease);
+}
+
+.btn-text:hover span,
+.section-link:hover span {
+  transform: translateX(4px);
+}
+
+/* ---------- Tarjetas y hojas ---------- */
+
+.card,
+.deliverable,
+.anatomy-item,
+.price-card,
+.lab-teaser,
+.page-thumb,
+.sheet {
+  transition:
+    transform .35s var(--ease),
+    box-shadow .35s var(--ease),
+    border-color .35s var(--ease),
+    background-color .35s var(--ease);
+}
+
+@media (hover: hover) {
+  .card:hover,
+  .deliverable:hover,
+  .anatomy-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, .5);
+    box-shadow: 0 12px 26px -20px rgba(26, 26, 26, .85);
+  }
+
+  .price-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .lab-teaser:hover {
+    border-color: var(--ink);
+  }
+
+  .page-thumb:hover {
+    transform: translateY(-4px);
+    box-shadow: 10px 12px 0 rgba(26, 26, 26, .07), 0 18px 30px -22px rgba(26, 26, 26, .9);
+  }
+
+  .page-thumb:nth-child(2):hover {
+    transform: translateY(12px);
+  }
+
+  .sheet:hover {
+    transform: translateY(-4px);
+    box-shadow: 24px 30px 0 rgba(26, 26, 26, .06), 0 30px 60px -26px rgba(26, 26, 26, .55);
+  }
+}
+
+/* Las filas del método y los pasos se marcan al pasar el cursor. */
+.method li {
+  transition: background-color .3s var(--ease);
+}
+
+.step {
+  transition: background-color .3s var(--ease);
+}
+
+@media (hover: hover) {
+  .method li:hover,
+  .step:hover {
+    background: rgba(255, 255, 255, .45);
+  }
+}
+
+/* ---------- Respuesta a prefers-reduced-motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Sin movimiento, el contenido se muestra de una: nada queda oculto. */
+  .js .reveal,
+  .js .reveal .section-num::before,
+  .js .sheet-wrap::before,
+  .js .steps::before,
+  .js .timeline::before,
+  .js .process::before,
+  .js .cards::before {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card:hover,
+  .deliverable:hover,
+  .anatomy-item:hover,
+  .price-card:hover,
+  .page-thumb:hover,
+  .page-thumb:nth-child(2):hover,
+  .sheet:hover {
+    transform: none;
+  }
+}
